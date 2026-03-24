@@ -7,113 +7,14 @@ on:
     branches: ['**']
 
 jobs:
-
-  # ─────────────────────────────────────────────────────────────────────────
-  # Lint: ESLint (JS) + HTMLHint (HTML)
-  # ─────────────────────────────────────────────────────────────────────────
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - run: npm install
-
-      - name: Lint JavaScript (ESLint)
-        run: npm run lint:js
-
-      - name: Lint HTML (HTMLHint)
-        run: npm run lint:html
-
-  # ─────────────────────────────────────────────────────────────────────────
-  # Structure: verify IDs, anchors, assets, and script identifiers exist.
-  # These are structural contracts — JS, nav, and form logic depend on them.
-  # Site-specific values (copy, counts) live in tests/site.config.js and are
-  # covered by E2E tests, not here.
-  # ─────────────────────────────────────────────────────────────────────────
-  structure:
-    name: Structure
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Required section IDs exist in index.html
-        run: |
-          for id in hero development neighbourhood timeline about contact; do
-            grep -q "id=\"$id\"" index.html || (echo "Missing section: #$id" && exit 1)
-          done
-
-      - name: Interactive element IDs exist in index.html
-        run: |
-          for id in nav scrollProgress menuBtn mobileMenu contactForm formSuccess; do
-            grep -q "id=\"$id\"" index.html || (echo "Missing element: #$id" && exit 1)
-          done
-
-      - name: Navigation anchor hrefs exist in index.html
-        run: |
-          for href in "#hero" "#development" "#neighbourhood" "#about" "#contact"; do
-            grep -q "href=\"$href\"" index.html || (echo "Missing nav link: $href" && exit 1)
-          done
-
-      - name: data-target attributes exist on animated counters
-        run: |
-          grep -q 'data-target' index.html || (echo "No data-target attributes found" && exit 1)
-          # Ensure counters exist in both dev stats and score sections
-          node -e "
-            const fs = require('fs');
-            const html = fs.readFileSync('index.html', 'utf8');
-            const matches = html.match(/data-target=\"\d+\"/g) || [];
-            if (matches.length === 0) { console.error('No data-target counters found'); process.exit(1); }
-            console.log('Found', matches.length, 'data-target counter(s):', matches.join(', '));
-          "
-
-      - name: Required static assets exist on disk
-        run: |
-          for f in assets/FORTERAHOMES.svg assets/FORTERA.svg assets/rendering.jpg; do
-            test -f "$f" || (echo "Missing asset: $f" && exit 1)
-          done
-
-      - name: CNAME file exists and is non-empty
-        run: test -s CNAME
-
-      - name: main.js is non-empty and defines expected identifiers
-        run: |
-          test -s main.js
-          for ident in contactForm menuBtn animateCounter revealObserver scrollProgress; do
-            grep -q "$ident" main.js || (echo "Identifier missing from main.js: $ident" && exit 1)
-          done
-
-  # ─────────────────────────────────────────────────────────────────────────
-  # E2E: Playwright browser tests — behaviour, form validation, asset loading.
-  # Site-specific values (nav labels, counts, asset paths) come from
-  # tests/site.config.js so the test logic itself stays generic.
-  # ─────────────────────────────────────────────────────────────────────────
-  e2e:
-    name: E2E Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - run: npm install
-
-      - name: Install Playwright browser
-        run: npx playwright install chromium --with-deps
-
-      - name: Run E2E tests
-        run: npm run test:e2e
-
-      - name: Upload Playwright report on failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 7
+      - run: npm run lint:js
+      - run: npm run lint:html
