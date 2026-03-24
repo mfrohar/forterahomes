@@ -239,6 +239,7 @@ textarea { resize: vertical; }
   height: 120px;
   width: auto;
   display: block;
+  margin-left: -0.6rem;
 }
 
 .nav-links {
