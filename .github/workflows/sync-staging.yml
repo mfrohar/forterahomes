@@ -15,5 +15,8 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Fast-forward staging to match main
-        run: git push origin HEAD:refs/heads/staging --force
+      - name: Merge main into staging
+        run: |
+          git checkout staging
+          git merge origin/main --ff-only
+          git push origin staging
