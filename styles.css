@@ -6,28 +6,29 @@
 /* --- Variables -------------------------------------------- */
 :root {
   --bg:           #ffffff;
-  --bg-alt:       #f7f7f7;
+  --bg-alt:       #f8f7f5;
   --bg-card:      #ffffff;
-  --surface:      #efefef;
-  --charcoal:     #111111;
-  --copper:       #9e8269;
-  --copper-light: #b9a28d;
-  --copper-deep:  #7a6552;
-  --copper-dim:   rgba(158, 130, 105, 0.10);
-  --copper-line:  rgba(158, 130, 105, 0.30);
-  --text:         #111111;
-  --text-muted:   #666666;
-  --text-dim:     #999999;
-  --border:       rgba(26, 22, 18, 0.12);
-  --border-light: rgba(26, 22, 18, 0.06);
+  --surface:      #edecea;
+  --charcoal:     #0A0908;
+  --copper:       #8B6851;
+  --copper-light: #A6825D;
+  --copper-deep:  #6E5140;
+  --copper-dim:   rgba(139, 104, 81, 0.10);
+  --copper-line:  rgba(139, 104, 81, 0.28);
+  --text:         #0A0908;
+  --text-muted:   #5a5450;
+  --text-dim:     #9a9490;
+  --border:       rgba(20, 16, 12, 0.10);
+  --border-light: rgba(20, 16, 12, 0.05);
   --radius:       100px;
+  --radius-input: 8px;
   --max-w:        1160px;
-  --nav-h:        88px;
+  --nav-h:        180px;
   --ease:         cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out:     cubic-bezier(0.0, 0, 0.2, 1);
-  --shadow-sm:    0 1px 3px rgba(28, 24, 21, 0.06), 0 1px 2px rgba(28, 24, 21, 0.04);
-  --shadow-md:    0 4px 16px rgba(28, 24, 21, 0.08), 0 2px 6px rgba(28, 24, 21, 0.05);
-  --shadow-lg:    0 12px 40px rgba(28, 24, 21, 0.10), 0 4px 12px rgba(28, 24, 21, 0.06);
+  --shadow-sm:    0 1px 4px rgba(20, 14, 8, 0.06), 0 1px 2px rgba(20, 14, 8, 0.04);
+  --shadow-md:    0 6px 24px rgba(20, 14, 8, 0.09), 0 2px 8px rgba(20, 14, 8, 0.05);
+  --shadow-lg:    0 16px 56px rgba(20, 14, 8, 0.12), 0 4px 16px rgba(20, 14, 8, 0.07);
 }
 
 /* --- Reset ------------------------------------------------- */
@@ -61,26 +62,32 @@ textarea { resize: vertical; }
   align-items: center;
   gap: 0.75rem;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 1.25rem;
+  color: var(--copper);
+  margin-bottom: 1.5rem;
 }
 
 .section-label::before {
-  display: none;
+  content: '';
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0.7;
+  flex-shrink: 0;
 }
 
 .section-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.75rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.1;
   color: var(--text);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.03em;
 }
 
 .body-text {
@@ -99,7 +106,7 @@ textarea { resize: vertical; }
 }
 
 .section {
-  padding: 8rem 0;
+  padding: 9rem 0;
 }
 
 .section-alt {
@@ -116,7 +123,13 @@ textarea { resize: vertical; }
 }
 
 .section-header .section-label::before {
-  display: none;
+  content: '';
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0.7;
+  flex-shrink: 0;
 }
 
 .section-header .section-label::after {
@@ -239,7 +252,6 @@ textarea { resize: vertical; }
   height: 120px;
   width: auto;
   display: block;
-  margin-left: -0.6rem;
 }
 
 .nav-links {
@@ -255,9 +267,10 @@ textarea { resize: vertical; }
 
 .nav-links a {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--text-muted);
   transition: color 0.2s;
   position: relative;
@@ -366,11 +379,23 @@ textarea { resize: vertical; }
 .hero::after {
   content: '';
   position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 55%;
-  height: 80%;
-  background: radial-gradient(ellipse at center, rgba(158, 130, 105, 0.06) 0%, transparent 65%);
+  top: -15%;
+  right: -8%;
+  width: 65%;
+  height: 100%;
+  background: radial-gradient(ellipse at 60% 40%, rgba(139, 104, 81, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Subtle left edge line */
+.hero-container::before {
+  content: '';
+  position: absolute;
+  left: 2.5rem;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--copper-line), transparent);
   pointer-events: none;
 }
 
@@ -393,10 +418,11 @@ textarea { resize: vertical; }
 
 .hero-rendering {
   width: 100%;
-  height: 520px;
+  height: 600px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 4px;
   display: block;
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-eyebrow {
@@ -429,21 +455,21 @@ textarea { resize: vertical; }
 }
 
 .eyebrow-text {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--copper);
 }
 
 .hero-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3.2vw, 3rem);
-  font-weight: 700;
-  line-height: 1.05;
+  font-size: clamp(3rem, 6.5vw, 6rem);
+  font-weight: 800;
+  line-height: 1.0;
   color: var(--text);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.03em;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.04em;
 }
 
 .hero-title em {
@@ -452,12 +478,12 @@ textarea { resize: vertical; }
 }
 
 .hero-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 400;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   color: var(--text-muted);
-  margin-bottom: 2.75rem;
-  line-height: 1.6;
+  margin-bottom: 3rem;
+  line-height: 1.7;
 }
 
 .hero-actions {
@@ -676,7 +702,11 @@ textarea { resize: vertical; }
 }
 
 .mission-ornament {
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
 }
 
 .mission-ornament-line {
@@ -696,15 +726,16 @@ textarea { resize: vertical; }
 }
 
 .mission-statement {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-  font-weight: 600;
-  font-style: normal;
-  line-height: 1.55;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.5;
   color: var(--text);
-  margin: 0 0 2rem;
+  margin: 0 0 2.25rem;
   padding: 0;
   border: none;
+  letter-spacing: -0.01em;
 }
 
 .mission-divider {
@@ -716,10 +747,10 @@ textarea { resize: vertical; }
 }
 
 .mission-body {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.95;
-  max-width: 640px;
+  max-width: 580px;
   margin: 0 auto;
 }
 
@@ -769,11 +800,11 @@ textarea { resize: vertical; }
 .rendering-frame {
   aspect-ratio: 4 / 3;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 4px;
   overflow: hidden;
   position: relative;
   background: var(--bg-alt);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .rendering-frame::before {
@@ -823,10 +854,10 @@ textarea { resize: vertical; }
 
 /* --- Map -------------------------------------------------- */
 .map-wrap {
-  margin-top: 4rem;
-  border-radius: 6px;
+  margin-top: 5rem;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
   border: 1px solid var(--border);
 }
 
@@ -847,9 +878,9 @@ textarea { resize: vertical; }
 /* --- Dev Stats -------------------------------------------- */
 .dev-stats {
   display: flex;
-  margin: 2rem 0 2.25rem;
+  margin: 2.5rem 0 2.5rem;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   background: var(--bg-alt);
 }
@@ -869,8 +900,8 @@ textarea { resize: vertical; }
 
 .stat-num {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.4rem;
+  font-weight: 800;
   color: var(--copper);
   line-height: 1;
   margin-bottom: 0.4rem;
@@ -895,8 +926,8 @@ textarea { resize: vertical; }
 .score-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 2.75rem 2rem 2.5rem;
+  border-radius: 4px;
+  padding: 3rem 2rem 2.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -951,9 +982,9 @@ textarea { resize: vertical; }
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--text);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .score-type {
@@ -1093,9 +1124,9 @@ textarea { resize: vertical; }
 
 .pillar {
   background: var(--bg-card);
-  padding: 2.75rem 2rem 2.5rem;
+  padding: 3rem 2.25rem 2.75rem;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 4px;
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease);
   box-shadow: var(--shadow-sm);
   position: relative;
@@ -1108,11 +1139,12 @@ textarea { resize: vertical; }
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(to right, var(--copper), var(--copper-light));
-  transform: scaleX(0);
+  transform: scaleX(0.25);
   transform-origin: left;
   transition: transform 0.4s var(--ease);
+  opacity: 0.5;
 }
 
 .pillar:hover {
@@ -1123,6 +1155,7 @@ textarea { resize: vertical; }
 
 .pillar:hover::before {
   transform: scaleX(1);
+  opacity: 1;
 }
 
 .pillar-icon {
@@ -1205,9 +1238,9 @@ textarea { resize: vertical; }
 .contact-form-wrap {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 3rem;
-  box-shadow: var(--shadow-md);
+  border-radius: 4px;
+  padding: 3.5rem;
+  box-shadow: var(--shadow-lg);
 }
 
 .form-title {
@@ -1251,8 +1284,8 @@ textarea { resize: vertical; }
 .form-group textarea {
   background: var(--bg-alt);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius-input);
+  padding: 0.9rem 1.15rem;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.85rem;
   color: var(--text);
@@ -1341,10 +1374,10 @@ textarea { resize: vertical; }
 
 /* --- Footer ----------------------------------------------- */
 .footer {
-  background: var(--bg);
+  background: #ffffff;
   color: var(--text-muted);
   border-top: 1px solid var(--border);
-  padding: 5rem 0 2.5rem;
+  padding: 6rem 0 3rem;
   position: relative;
   overflow: hidden;
 }
@@ -1373,22 +1406,24 @@ textarea { resize: vertical; }
 }
 
 .footer-logo-img {
-  height: 90px;
+  height: 52px;
   width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 .footer-tagline {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   letter-spacing: 0.04em;
-  line-height: 1.7;
-  max-width: 260px;
+  line-height: 1.8;
+  max-width: 240px;
 }
 
 .footer-col-title {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--text-dim);
   margin-bottom: 1.5rem;
@@ -1401,18 +1436,18 @@ textarea { resize: vertical; }
 }
 
 .footer-nav a {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   transition: color 0.2s;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 .footer-nav a:hover { color: var(--text); }
 
 .footer-contact-col p {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.7;
-  letter-spacing: 0.03em;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
 }
 
 .footer-bottom {
@@ -1421,15 +1456,15 @@ textarea { resize: vertical; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 2.5rem;
   border-top: 1px solid var(--border);
   gap: 1rem;
 }
 
 .footer-bottom p {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--text-dim);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 /* --- Reveal Animations ------------------------------------ */
@@ -1486,7 +1521,7 @@ textarea { resize: vertical; }
     display: block;
   }
   .hero-rendering {
-    height: 280px;
+    height: 320px;
   }
   .hero-actions {
     justify-content: center;
@@ -1509,7 +1544,7 @@ textarea { resize: vertical; }
   .nav-inner { padding: 0 1.5rem; }
   .container { padding: 0 1.5rem; }
 
-  .section { padding: 5rem 0; }
+  .section { padding: 6rem 0; }
 
   .hero {
     padding: calc(var(--nav-h) + 4rem) 0 5rem;
