@@ -26,3 +26,13 @@ gh pr create --base staging --title "My change" --body "..."
 ```
 
 Never push directly to `staging` or `main`.
+
+## Keeping Staging in Sync with Main
+
+After every `staging` → `main` merge, fast-forward staging to match main:
+
+```bash
+git push origin origin/main:refs/heads/staging
+```
+
+This prevents the "1 commit behind" drift on GitHub. Always run this after a production deploy.
