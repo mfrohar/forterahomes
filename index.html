@@ -70,12 +70,13 @@
         "publisher": { "@id": "https://forterahomes.ca/#organization" }
       },
       {
-        "@type": "RealEstateListing",
+        "@type": "ApartmentComplex",
         "@id": "https://forterahomes.ca/#listing",
         "name": "Fortera Homes — 82 Genest St",
-        "description": "A landmark residential development coming soon to Ottawa. Premium construction, high-end finishes. Register your interest today.",
+        "description": "A landmark 8-unit rental development coming soon to Ottawa. Premium construction, high-end finishes. Register your interest today.",
         "url": "https://forterahomes.ca",
         "image": "https://forterahomes.ca/assets/rendering.jpg",
+        "numberOfRooms": 8,
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "82 Genest St",
@@ -91,6 +92,7 @@
         },
         "offers": {
           "@type": "Offer",
+          "businessFunction": "https://purl.org/goodrelations/v1#LeaseOut",
           "availability": "https://schema.org/PreOrder",
           "seller": { "@id": "https://forterahomes.ca/#organization" }
         }
