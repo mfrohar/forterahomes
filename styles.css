@@ -451,8 +451,8 @@ textarea { resize: vertical; }
 
 .hero-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(3.2rem, 6vw, 5.5rem);
-  font-weight: 800;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 700;
   line-height: 1.05;
   color: var(--text);
   margin-bottom: 1.5rem;
