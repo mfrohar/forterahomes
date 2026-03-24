@@ -244,11 +244,12 @@ textarea { resize: vertical; }
 .nav-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: var(--nav-h);
   padding: 0 2.5rem;
   max-width: var(--max-w);
   margin: 0 auto;
+  gap: 2rem;
 }
 
 .nav-logo {
@@ -266,14 +267,19 @@ textarea { resize: vertical; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2.75rem;
+  gap: 2rem;
+  flex: 1;
+}
+
+.nav-links li:last-child {
+  margin-left: auto;
 }
 
 .nav-links a {
-  font-size: 0.7rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--text-muted);
   transition: color 0.2s;
   position: relative;
