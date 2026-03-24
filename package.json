@@ -1,0 +1,17 @@
+{
+  "name": "fortera-homes",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint:js": "eslint main.js",
+    "lint:html": "htmlhint index.html",
+    "test:e2e": "playwright test",
+    "test": "npm run lint:js && npm run lint:html && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "htmlhint": "^1.1.4"
+  }
+}
