@@ -374,7 +374,7 @@ textarea { resize: vertical; }
   min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: calc(var(--nav-h) + 6rem) 2.5rem 8rem;
+  padding: calc(var(--nav-h) + 6rem) 0 8rem;
   overflow: hidden;
   background: #ffffff;
 }
@@ -402,6 +402,7 @@ textarea { resize: vertical; }
   width: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
+  padding: 0 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1524,7 +1525,10 @@ textarea { resize: vertical; }
   .section { padding: 5rem 0; }
 
   .hero {
-    padding: calc(var(--nav-h) + 4rem) 1.5rem 5rem;
+    padding: calc(var(--nav-h) + 4rem) 0 5rem;
+  }
+  .hero-container {
+    padding: 0 1.5rem;
   }
 
   .dev-grid {
