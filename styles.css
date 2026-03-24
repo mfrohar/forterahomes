@@ -6,20 +6,20 @@
 /* --- Variables -------------------------------------------- */
 :root {
   --bg:           #ffffff;
-  --bg-alt:       #f7f4f0;
+  --bg-alt:       #f5f1ec;
   --bg-card:      #ffffff;
-  --surface:      #f0ece6;
-  --charcoal:     #1c1815;
+  --surface:      #ede8e1;
+  --charcoal:     #1a1612;
   --copper:       #9e8269;
   --copper-light: #b9a28d;
   --copper-deep:  #7a6552;
-  --copper-dim:   rgba(158, 130, 105, 0.10);
-  --copper-line:  rgba(158, 130, 105, 0.28);
-  --text:         #1c1815;
-  --text-muted:   #6b6360;
-  --text-dim:     #a09c98;
-  --border:       rgba(28, 24, 21, 0.09);
-  --border-light: rgba(28, 24, 21, 0.05);
+  --copper-dim:   rgba(158, 130, 105, 0.12);
+  --copper-line:  rgba(158, 130, 105, 0.35);
+  --text:         #1a1612;
+  --text-muted:   #4a4440;
+  --text-dim:     #7a7570;
+  --border:       rgba(26, 22, 18, 0.12);
+  --border-light: rgba(26, 22, 18, 0.06);
   --radius:       2px;
   --max-w:        1160px;
   --nav-h:        88px;
@@ -258,7 +258,7 @@ textarea { resize: vertical; }
 }
 
 .nav-logo img {
-  height: 52px;
+  height: 70px;
   width: auto;
   display: block;
 }
@@ -368,7 +368,7 @@ textarea { resize: vertical; }
   min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: calc(var(--nav-h) + 6rem) 2.5rem 6rem;
+  padding: calc(var(--nav-h) + 6rem) 2.5rem 8rem;
   overflow: hidden;
   background: #ffffff;
 }
@@ -628,11 +628,12 @@ textarea { resize: vertical; }
   bottom: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  pointer-events: none;
 }
 
 .hero-scroll-label {
@@ -641,6 +642,7 @@ textarea { resize: vertical; }
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-dim);
+  display: none;
 }
 
 .scroll-bar {
@@ -737,9 +739,9 @@ textarea { resize: vertical; }
 }
 
 .mission-body {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 2;
+  line-height: 1.95;
   max-width: 640px;
   margin: 0 auto;
 }
@@ -1462,13 +1464,18 @@ textarea { resize: vertical; }
 /* --- Reveal Animations ------------------------------------ */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Fallback: make visible after 2s in case observer misfires */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* Stagger pillar children */
