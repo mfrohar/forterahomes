@@ -451,7 +451,7 @@ textarea { resize: vertical; }
 
 .hero-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
   font-weight: 700;
   line-height: 1.05;
   color: var(--text);
