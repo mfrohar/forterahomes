@@ -276,10 +276,10 @@ textarea { resize: vertical; }
 }
 
 .nav-links a {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   color: var(--text-muted);
   transition: color 0.2s;
   position: relative;
