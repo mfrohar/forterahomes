@@ -458,11 +458,10 @@ textarea { resize: vertical; }
 }
 
 .hero-subtitle {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   color: var(--text-muted);
-  text-transform: uppercase;
   margin-bottom: 2.75rem;
   line-height: 1.6;
 }
