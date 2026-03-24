@@ -36,3 +36,40 @@ git push origin origin/main:refs/heads/staging
 ```
 
 This prevents the "1 commit behind" drift on GitHub. Always run this after a production deploy.
+
+## Local Preview Setup
+
+This is a static site (no build step). To preview locally:
+
+1. Copy files to `/tmp/fortera-site` (avoids macOS sandbox permission errors in worktrees):
+```bash
+mkdir -p /tmp/fortera-site/assets /tmp/fortera-site/.claude
+cp index.html styles.css main.js /tmp/fortera-site/
+cp -r assets/ /tmp/fortera-site/assets/
+```
+
+2. Create `.claude/launch.json` in the worktree:
+```json
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "fortera-homes",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd /tmp/fortera-site && python3 -m http.server $PORT"],
+      "port": 4200,
+      "autoPort": true
+    }
+  ]
+}
+```
+
+3. Use `preview_start` with name `"fortera-homes"`.
+
+4. After every CSS/HTML/JS edit, sync changes before taking screenshots:
+```bash
+cp index.html styles.css main.js /tmp/fortera-site/
+cp -r assets/ /tmp/fortera-site/assets/
+```
+
+**Important:** The preview panel renders at ~632px wide (mobile breakpoint). Desktop layout requires viewport ≥ 860px. Always use `preview_eval` to check `window.innerWidth` when debugging layout issues.
