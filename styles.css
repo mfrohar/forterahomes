@@ -6,18 +6,18 @@
 /* --- Variables -------------------------------------------- */
 :root {
   --bg:           #ffffff;
-  --bg-alt:       #f5f5f5;
+  --bg-alt:       #f7f7f7;
   --bg-card:      #ffffff;
-  --surface:      #ebebeb;
-  --charcoal:     #1a1612;
+  --surface:      #efefef;
+  --charcoal:     #111111;
   --copper:       #9e8269;
   --copper-light: #b9a28d;
   --copper-deep:  #7a6552;
-  --copper-dim:   rgba(158, 130, 105, 0.12);
-  --copper-line:  rgba(158, 130, 105, 0.35);
-  --text:         #1a1612;
-  --text-muted:   #4a4440;
-  --text-dim:     #7a7570;
+  --copper-dim:   rgba(158, 130, 105, 0.10);
+  --copper-line:  rgba(158, 130, 105, 0.30);
+  --text:         #111111;
+  --text-muted:   #666666;
+  --text-dim:     #999999;
   --border:       rgba(26, 22, 18, 0.12);
   --border-light: rgba(26, 22, 18, 0.06);
   --radius:       100px;
@@ -43,7 +43,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   line-height: 1.7;
   overflow-x: hidden;
@@ -60,23 +60,17 @@ textarea { resize: vertical; }
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--copper);
+  color: var(--text-dim);
   margin-bottom: 1.25rem;
 }
 
 .section-label::before {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 1px;
-  background: var(--copper);
-  opacity: 0.6;
-  flex-shrink: 0;
+  display: none;
 }
 
 .section-title {
@@ -90,9 +84,9 @@ textarea { resize: vertical; }
 }
 
 .body-text {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-muted);
-  line-height: 1.9;
+  line-height: 1.85;
   margin-bottom: 1.25rem;
 }
 
@@ -105,7 +99,7 @@ textarea { resize: vertical; }
 }
 
 .section {
-  padding: 7rem 0;
+  padding: 8rem 0;
 }
 
 .section-alt {
@@ -140,10 +134,10 @@ textarea { resize: vertical; }
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 1rem 2.25rem;
   border-radius: var(--radius);
@@ -158,26 +152,10 @@ textarea { resize: vertical; }
   overflow: hidden;
 }
 
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.10) 50%, transparent 60%);
-  transform: translateX(-120%);
-  transition: transform 0.6s ease;
-  pointer-events: none;
-}
-
-.btn-primary:hover::after {
-  transform: translateX(120%);
-}
-
 .btn-primary:hover {
-  background: var(--copper);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(158, 130, 105, 0.30);
+  background: #333333;
 }
-.btn-primary:active { transform: translateY(0); box-shadow: none; }
+.btn-primary:active { background: #000000; }
 
 .btn-ghost {
   background: transparent;
@@ -185,9 +163,8 @@ textarea { resize: vertical; }
   border: 1px solid rgba(28, 24, 21, 0.25);
 }
 .btn-ghost:hover {
-  border-color: var(--copper);
-  color: var(--copper);
-  transform: translateY(-2px);
+  border-color: var(--text);
+  color: var(--text);
 }
 
 .btn-copper {
@@ -276,7 +253,7 @@ textarea { resize: vertical; }
 }
 
 .nav-links a {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0;
@@ -548,7 +525,7 @@ textarea { resize: vertical; }
 }
 
 .hero-frame-address {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
   color: var(--copper);
   letter-spacing: 0.02em;
@@ -572,7 +549,7 @@ textarea { resize: vertical; }
 }
 
 .hero-badge-num {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1;
@@ -830,7 +807,7 @@ textarea { resize: vertical; }
 }
 
 .rendering-address {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: var(--copper);
@@ -884,7 +861,7 @@ textarea { resize: vertical; }
 .dev-stat:hover { background: var(--surface); }
 
 .stat-num {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: var(--copper);
@@ -966,7 +943,7 @@ textarea { resize: vertical; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.8rem;
   color: var(--text);
   font-weight: 700;
@@ -982,7 +959,7 @@ textarea { resize: vertical; }
 }
 
 .score-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   color: var(--text);
   margin-bottom: 0.5rem;
@@ -1080,7 +1057,7 @@ textarea { resize: vertical; }
 }
 
 .timeline-date {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--copper);
@@ -1158,7 +1135,7 @@ textarea { resize: vertical; }
 }
 
 .pillar-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
@@ -1227,7 +1204,7 @@ textarea { resize: vertical; }
 }
 
 .form-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--text);
@@ -1269,7 +1246,7 @@ textarea { resize: vertical; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0.85rem 1.1rem;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.85rem;
   color: var(--text);
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
@@ -1340,7 +1317,7 @@ textarea { resize: vertical; }
 }
 
 .form-success h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--text);
