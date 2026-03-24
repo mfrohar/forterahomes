@@ -380,13 +380,22 @@ textarea { resize: vertical; }
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 2.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
 }
 
 .hero-content {
   max-width: 600px;
+}
+
+.hero-rendering {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
 }
 
 .hero-eyebrow {
@@ -459,9 +468,6 @@ textarea { resize: vertical; }
 /* Hero visual side */
 .hero-visual {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .hero-frame {
@@ -1476,7 +1482,10 @@ textarea { resize: vertical; }
     text-align: center;
   }
   .hero-visual {
-    display: none;
+    display: block;
+  }
+  .hero-rendering {
+    height: 280px;
   }
   .hero-actions {
     justify-content: center;
