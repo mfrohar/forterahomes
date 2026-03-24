@@ -258,7 +258,7 @@ textarea { resize: vertical; }
 }
 
 .nav-logo img {
-  height: 70px;
+  height: 100px;
   width: auto;
   display: block;
 }
@@ -1362,22 +1362,16 @@ textarea { resize: vertical; }
 
 /* --- Footer ----------------------------------------------- */
 .footer {
-  background: var(--charcoal);
-  color: rgba(255,255,255,0.7);
+  background: var(--bg);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
   padding: 5rem 0 2.5rem;
   position: relative;
   overflow: hidden;
 }
 
 .footer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
+  display: none;
 }
 
 .footer-inner {
@@ -1402,13 +1396,11 @@ textarea { resize: vertical; }
 .footer-logo-img {
   height: 56px;
   width: auto;
-  /* Invert to white for dark footer */
-  filter: invert(1) brightness(0.85);
 }
 
 .footer-tagline {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-dim);
   letter-spacing: 0.04em;
   line-height: 1.7;
   max-width: 260px;
@@ -1419,7 +1411,7 @@ textarea { resize: vertical; }
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-dim);
   margin-bottom: 1.5rem;
 }
 
@@ -1431,15 +1423,15 @@ textarea { resize: vertical; }
 
 .footer-nav a {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-muted);
   transition: color 0.2s;
   letter-spacing: 0.03em;
 }
-.footer-nav a:hover { color: rgba(255,255,255,0.9); }
+.footer-nav a:hover { color: var(--text); }
 
 .footer-contact-col p {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-muted);
   line-height: 1.7;
   letter-spacing: 0.03em;
 }
@@ -1451,13 +1443,13 @@ textarea { resize: vertical; }
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid var(--border);
   gap: 1rem;
 }
 
 .footer-bottom p {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.3);
+  color: var(--text-dim);
   letter-spacing: 0.06em;
 }
 
