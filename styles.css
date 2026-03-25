@@ -310,6 +310,7 @@ textarea { resize: vertical; }
   flex-direction: column;
   gap: 5px;
   padding: 6px;
+  margin-left: auto;
 }
 .nav-menu-btn span {
   display: block;
@@ -1565,7 +1566,7 @@ textarea { resize: vertical; }
 
   .nav-logo img { height: 64px; }
 
-  .nav-inner { padding: 0 1.5rem; }
+  .nav-inner { padding: 0 1.5rem; justify-content: space-between; }
   .container { padding: 0 1.5rem; }
 
   .section { padding: 5rem 0; }
