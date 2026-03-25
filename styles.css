@@ -1544,7 +1544,7 @@ textarea { resize: vertical; }
     display: block;
   }
   .hero-rendering {
-    height: 280px;
+    height: 360px;
   }
   .hero-actions {
     justify-content: center;
