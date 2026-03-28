@@ -1655,6 +1655,14 @@ textarea { resize: vertical; }
     align-items: flex-start;
     gap: 0.5rem;
   }
+
+  .section-title {
+    font-size: clamp(3rem, 11vw, 5rem);
+    text-align: center;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    padding: 0 0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
