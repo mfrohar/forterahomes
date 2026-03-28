@@ -1287,10 +1287,7 @@ body.subnav-visible .subnav {
   }
 
   /* UNIT FILTERS */
-  .unit-filters {
-    flex-wrap: wrap;
-    gap: 0.75rem 1.5rem;
-  }
+  .unit-filters { gap: 0.5rem 1.5rem; }
   .unit-filter-tab { font-size: 0.72rem; }
 
   /* UNIT CARDS */
@@ -1320,6 +1317,12 @@ body.subnav-visible .subnav {
     margin-left: 0;
   }
   .fortera-panel { height: 50vw; min-height: 200px; }
+
+  /* SECTION HEADINGS — scale down so long words like NEIGHBOURHOOD fit */
+  .section-h2 {
+    font-size: clamp(1.8rem, 7vw, 3.5rem);
+  }
+
 
   /* NEIGHBOURHOOD */
   .neighbourhood-grid {
@@ -1351,7 +1354,10 @@ body.subnav-visible .subnav {
   .contact-form-h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
 
   /* FOOTER */
-  .footer-wordmark { font-size: clamp(5rem, 22vw, 9rem); }
+  .footer-wordmark {
+    font-size: clamp(3rem, 16vw, 6rem);
+    overflow: hidden;
+  }
   .footer-nav { flex-wrap: wrap; gap: 1rem 1.5rem; justify-content: center; }
   .footer-bar {
     flex-direction: column;
@@ -1369,7 +1375,7 @@ body.subnav-visible .subnav {
 @media (max-width: 480px) {
   .hero-title { font-size: clamp(2.5rem, 13vw, 4rem); }
   .photo-grid { grid-template-columns: 1fr; }
-  .unit-filters { gap: 0.5rem 1rem; }
+  .unit-filters { gap: 0.4rem 1rem; }
   .fortera-panel { height: 60vw; }
   .hero-title-sub { font-size: 0.85rem; }
   .subnav-links { display: none; }
