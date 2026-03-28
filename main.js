@@ -164,8 +164,10 @@ const heroImg1 = document.getElementById('heroImg1');
 const heroImg2 = document.getElementById('heroImg2');
 const heroTapHint = document.getElementById('heroTapHint');
 let heroActive = 1;
+let tapStartX = 0;
+let tapStartY = 0;
 
-heroTapViewer?.addEventListener('click', () => {
+function swapHeroImage() {
   if (heroActive === 1) {
     heroImg1.classList.remove('active');
     heroImg2.classList.add('active');
@@ -176,20 +178,28 @@ heroTapViewer?.addEventListener('click', () => {
     heroActive = 1;
   }
   // Hide hint permanently on first tap
-  if (heroTapHint && heroTapHint.style.visibility !== 'hidden') {
+  if (heroTapHint) {
     heroTapHint.style.opacity = '0';
     heroTapHint.style.visibility = 'hidden';
   }
-});
+}
 
-let tapStartX = 0;
+// Desktop click
+heroTapViewer?.addEventListener('click', swapHeroImage);
+
+// Mobile touch — only trigger if it was a tap, not a scroll
 heroTapViewer?.addEventListener('touchstart', e => {
   tapStartX = e.touches[0].clientX;
+  tapStartY = e.touches[0].clientY;
 }, { passive: true });
 
 heroTapViewer?.addEventListener('touchend', e => {
-  const diff = Math.abs(tapStartX - e.changedTouches[0].clientX);
-  if (diff < 10) heroTapViewer.click();
+  const dx = Math.abs(e.changedTouches[0].clientX - tapStartX);
+  const dy = Math.abs(e.changedTouches[0].clientY - tapStartY);
+  // Only count as tap if finger barely moved (not a scroll)
+  if (dx < 15 && dy < 15) {
+    swapHeroImage();
+  }
 }, { passive: true });
 
 /* ---- Form validation -------------------------------------- */
