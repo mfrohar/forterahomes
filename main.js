@@ -175,7 +175,8 @@ heroTapViewer?.addEventListener('click', () => {
     heroImg1.classList.add('active');
     heroActive = 1;
   }
-  if (heroTapHint) {
+  // Hide hint permanently on first tap
+  if (heroTapHint && heroTapHint.style.visibility !== 'hidden') {
     heroTapHint.style.opacity = '0';
     heroTapHint.style.visibility = 'hidden';
   }
