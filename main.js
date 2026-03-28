@@ -158,45 +158,37 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-/* ---- Hero slider ------------------------------------------ */
-const heroTrack = document.getElementById('heroTrack');
-const heroSlides = document.querySelectorAll('.hero-slide');
-let heroIndex = 0;
-let heroTouchStartX = 0;
-let heroDragging = false;
-let heroDragOffset = 0;
+/* ---- Hero image tap-to-swap ------------------------------- */
+const heroTapViewer = document.getElementById('heroTapViewer');
+const heroImg1 = document.getElementById('heroImg1');
+const heroImg2 = document.getElementById('heroImg2');
+const heroTapHint = document.getElementById('heroTapHint');
+let heroActive = 1;
 
-function goToHeroSlide(index) {
-  heroIndex = Math.max(0, Math.min(index, heroSlides.length - 1));
-  heroTrack.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
-}
-
-// Start on slide 0 (front.jpg)
-goToHeroSlide(0);
-
-// Touch swipe
-heroTrack?.addEventListener('touchstart', e => {
-  heroTouchStartX = e.touches[0].clientX;
-  heroDragging = true;
-  heroTrack.style.transition = 'none';
-}, { passive: true });
-
-heroTrack?.addEventListener('touchmove', e => {
-  if (!heroDragging) return;
-  heroDragOffset = e.touches[0].clientX - heroTouchStartX;
-  const base = heroIndex * 100;
-  heroTrack.style.transform = `translateX(calc(-${base}% + ${heroDragOffset}px))`;
-}, { passive: true });
-
-heroTrack?.addEventListener('touchend', e => {
-  heroDragging = false;
-  const diff = heroTouchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) {
-    goToHeroSlide(diff > 0 ? heroIndex + 1 : heroIndex - 1);
+heroTapViewer?.addEventListener('click', () => {
+  if (heroActive === 1) {
+    heroImg1.classList.remove('active');
+    heroImg2.classList.add('active');
+    heroActive = 2;
   } else {
-    goToHeroSlide(heroIndex);
+    heroImg2.classList.remove('active');
+    heroImg1.classList.add('active');
+    heroActive = 1;
   }
+  if (heroTapHint) {
+    heroTapHint.style.opacity = '0';
+    heroTapHint.style.visibility = 'hidden';
+  }
+});
+
+let tapStartX = 0;
+heroTapViewer?.addEventListener('touchstart', e => {
+  tapStartX = e.touches[0].clientX;
+}, { passive: true });
+
+heroTapViewer?.addEventListener('touchend', e => {
+  const diff = Math.abs(tapStartX - e.changedTouches[0].clientX);
+  if (diff < 10) heroTapViewer.click();
 }, { passive: true });
 
 /* ---- Form validation -------------------------------------- */
