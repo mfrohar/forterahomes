@@ -408,6 +408,8 @@ body.subnav-visible .subnav {
   animation: hintPulse 1.2s ease-in-out infinite;
   pointer-events: none;
   z-index: 10;
+  opacity: 1;
+  visibility: visible;
   transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
