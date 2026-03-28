@@ -159,48 +159,51 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ---- Hero image tap-to-swap ------------------------------- */
-const heroTapViewer = document.getElementById('heroTapViewer');
-const heroImg1 = document.getElementById('heroImg1');
-const heroImg2 = document.getElementById('heroImg2');
-const heroTapHint = document.getElementById('heroTapHint');
-let heroActive = 1;
-let tapStartX = 0;
-let tapStartY = 0;
+(function() {
+  const heroTapViewer = document.getElementById('heroTapViewer');
+  const heroImg1 = document.getElementById('heroImg1');
+  const heroImg2 = document.getElementById('heroImg2');
+  const heroTapHint = document.getElementById('heroTapHint');
+  if (!heroTapViewer || !heroImg1 || !heroImg2) return;
 
-function swapHeroImage() {
-  if (heroActive === 1) {
-    heroImg1.classList.remove('active');
-    heroImg2.classList.add('active');
-    heroActive = 2;
-  } else {
-    heroImg2.classList.remove('active');
-    heroImg1.classList.add('active');
-    heroActive = 1;
+  let heroActive = 1;
+  let tapStartX = 0;
+  let tapStartY = 0;
+
+  function swap() {
+    if (heroActive === 1) {
+      heroImg1.classList.remove('active');
+      heroImg2.classList.add('active');
+      heroActive = 2;
+    } else {
+      heroImg2.classList.remove('active');
+      heroImg1.classList.add('active');
+      heroActive = 1;
+    }
+    if (heroTapHint) {
+      heroTapHint.style.opacity = '0';
+      heroTapHint.style.visibility = 'hidden';
+    }
   }
-  // Hide hint permanently on first tap
-  if (heroTapHint) {
-    heroTapHint.style.opacity = '0';
-    heroTapHint.style.visibility = 'hidden';
-  }
-}
 
-// Desktop click
-heroTapViewer?.addEventListener('click', swapHeroImage);
+  // Desktop click
+  heroTapViewer.addEventListener('click', swap);
 
-// Mobile touch — only trigger if it was a tap, not a scroll
-heroTapViewer?.addEventListener('touchstart', e => {
-  tapStartX = e.touches[0].clientX;
-  tapStartY = e.touches[0].clientY;
-}, { passive: true });
+  // Mobile touch — only fire on tap, not scroll
+  heroTapViewer.addEventListener('touchstart', function(e) {
+    tapStartX = e.touches[0].clientX;
+    tapStartY = e.touches[0].clientY;
+  }, { passive: true });
 
-heroTapViewer?.addEventListener('touchend', e => {
-  const dx = Math.abs(e.changedTouches[0].clientX - tapStartX);
-  const dy = Math.abs(e.changedTouches[0].clientY - tapStartY);
-  // Only count as tap if finger barely moved (not a scroll)
-  if (dx < 15 && dy < 15) {
-    swapHeroImage();
-  }
-}, { passive: true });
+  heroTapViewer.addEventListener('touchend', function(e) {
+    var dx = Math.abs(e.changedTouches[0].clientX - tapStartX);
+    var dy = Math.abs(e.changedTouches[0].clientY - tapStartY);
+    if (dx < 15 && dy < 15) {
+      e.preventDefault();
+      swap();
+    }
+  }, { passive: false });
+})();
 
 /* ---- Form validation -------------------------------------- */
 const contactForm = document.getElementById('contactForm');
