@@ -20,6 +20,7 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -1253,41 +1254,123 @@ body.subnav-visible .subnav {
 }
 
 @media (max-width: 768px) {
-  .container { padding: 0 1.5rem; }
-  .hero-content { padding: 0 1.5rem; }
 
-  .hero-bottom-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-
-  .hero-ctas {
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-  }
-
-  .hero-ctas .btn { width: 100%; text-align: center; }
-
-  .units-grid { grid-template-columns: 1fr; }
-
-  .fortera-way-panels {
-    grid-template-columns: 1fr;
-  }
-  .fortera-panel--short,
-  .fortera-panel--tall { height: 50vw; }
-
-
-  .footer-bar {
-    flex-direction: column;
-    text-align: center;
-    padding: 1.5rem 2rem;
-    gap: 0.5rem;
-  }
-
+  /* NAV */
+  .nav-logo { font-size: 1.6rem; }
+  .nav-inner { padding: 0 1.25rem; }
   .nav-right .btn-outline--dark { display: none; }
 
-  .contact-top { padding: 3rem 1.5rem; }
-  .contact-top-right { flex-direction: column; }
+  /* SUBNAV */
+  .subnav-links { gap: 1rem; font-size: 0.55rem; }
+  .subnav-title { font-size: 0.55rem; letter-spacing: 0.1em; }
+
+  /* HERO */
+  .hero-content { padding: 0 1.25rem; }
+  .hero-title { font-size: clamp(3rem, 12vw, 5rem); }
+  .hero-title-sub { font-size: 1rem; letter-spacing: 0.14em; }
+  .hero-stats { font-size: 0.75rem; }
+  .hero-bottom-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .hero-ctas a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* UNIT FILTERS */
+  .unit-filters {
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+  .unit-filter-tab { font-size: 0.72rem; }
+
+  /* UNIT CARDS */
+  .units-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 0 1.25rem;
+  }
+
+  /* PHOTO GRID */
+  .photo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* FEATURE LIST */
+  .feature-list {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
+    gap: 0.5rem;
+  }
+  .feature-item { font-size: 1.2rem; }
+
+  /* FORTERA WAY — 3 panels stack vertically */
+  .fortera-way-panels {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-left: 0;
+  }
+  .fortera-panel { height: 50vw; min-height: 200px; }
+
+  /* NEIGHBOURHOOD */
+  .neighbourhood-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .neighbourhood-map { height: 300px; }
+  .neighbourhood-categories { padding-right: 0; }
+
+  /* REGISTRATION TOP */
+  .contact-top {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.5rem 1.25rem;
+  }
+  .contact-top-right {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .contact-top-right a {
+    flex: 1;
+    text-align: center;
+    min-width: 140px;
+  }
+
+  /* REGISTRATION FORM */
+  .contact-form-section { padding: 4rem 1.25rem; }
+  .contact-form-h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
+
+  /* FOOTER */
+  .footer-wordmark { font-size: clamp(5rem, 22vw, 9rem); }
+  .footer-nav { flex-wrap: wrap; gap: 1rem 1.5rem; justify-content: center; }
+  .footer-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* CURSOR — disable on touch devices */
+  .cursor-dot, .cursor-ring { display: none; }
+  * { cursor: auto !important; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(2.5rem, 13vw, 4rem); }
+  .photo-grid { grid-template-columns: 1fr; }
+  .unit-filters { gap: 0.5rem 1rem; }
+  .fortera-panel { height: 60vw; }
+  .hero-title-sub { font-size: 0.85rem; }
+  .subnav-links { display: none; }
 }
