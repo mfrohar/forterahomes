@@ -158,6 +158,40 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+/* ---- Hero image tap-to-swap ------------------------------- */
+const heroTapViewer = document.getElementById('heroTapViewer');
+const heroImg1 = document.getElementById('heroImg1');
+const heroImg2 = document.getElementById('heroImg2');
+const heroTapHint = document.getElementById('heroTapHint');
+let heroActive = 1;
+
+heroTapViewer?.addEventListener('click', () => {
+  if (heroActive === 1) {
+    heroImg1.classList.remove('active');
+    heroImg2.classList.add('active');
+    heroActive = 2;
+  } else {
+    heroImg2.classList.remove('active');
+    heroImg1.classList.add('active');
+    heroActive = 1;
+  }
+  // Hide hint permanently on first tap
+  if (heroTapHint && heroTapHint.style.visibility !== 'hidden') {
+    heroTapHint.style.opacity = '0';
+    heroTapHint.style.visibility = 'hidden';
+  }
+});
+
+let tapStartX = 0;
+heroTapViewer?.addEventListener('touchstart', e => {
+  tapStartX = e.touches[0].clientX;
+}, { passive: true });
+
+heroTapViewer?.addEventListener('touchend', e => {
+  const diff = Math.abs(tapStartX - e.changedTouches[0].clientX);
+  if (diff < 10) heroTapViewer.click();
+}, { passive: true });
+
 /* ---- Form validation -------------------------------------- */
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
