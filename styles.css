@@ -1323,6 +1323,7 @@ body.subnav-visible .subnav {
     font-size: clamp(1.8rem, 7vw, 3.5rem);
   }
 
+
   /* NEIGHBOURHOOD */
   .neighbourhood-grid {
     grid-template-columns: 1fr;
