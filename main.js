@@ -158,6 +158,34 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+/* ---- Hero slider ------------------------------------------ */
+const heroTrack = document.getElementById('heroTrack');
+const heroSlides = document.querySelectorAll('.hero-slide');
+let heroIndex = 0;
+let heroTouchStartX = 0;
+let heroTouchEndX = 0;
+
+function goToHeroSlide(index) {
+  heroIndex = (index + heroSlides.length) % heroSlides.length;
+  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+}
+
+let heroInterval = setInterval(() => goToHeroSlide(heroIndex + 1), 3000);
+
+heroTrack?.addEventListener('touchstart', e => {
+  heroTouchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+heroTrack?.addEventListener('touchend', e => {
+  heroTouchEndX = e.changedTouches[0].clientX;
+  const diff = heroTouchStartX - heroTouchEndX;
+  if (Math.abs(diff) > 40) {
+    clearInterval(heroInterval);
+    goToHeroSlide(diff > 0 ? heroIndex + 1 : heroIndex - 1);
+    heroInterval = setInterval(() => goToHeroSlide(heroIndex + 1), 3000);
+  }
+}, { passive: true });
+
 /* ---- Form validation -------------------------------------- */
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
