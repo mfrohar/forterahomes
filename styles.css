@@ -397,7 +397,7 @@ body.subnav-visible .subnav {
   animation: heroSwapIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-/* Mobile — fixed height crop */
+/* Mobile */
 @media (max-width: 768px) {
   .hero-image-wrap {
     width: 100vw;
@@ -405,13 +405,35 @@ body.subnav-visible .subnav {
     margin-left: calc(-50vw + 50%);
     margin-top: 2.5rem;
   }
+
+  .hero-tap-viewer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
   .hero-tap-img {
     width: 100%;
-    height: 75vw;
-    min-height: 260px;
-    max-height: 420px;
-    object-fit: cover;
-    object-position: center center;
+    height: auto;
+    display: none;
+    position: relative;
+    top: auto;
+    left: auto;
+    object-fit: unset;
+  }
+
+  .hero-tap-img.active {
+    display: block;
+  }
+
+  .hero-tap-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
   }
 }
 
