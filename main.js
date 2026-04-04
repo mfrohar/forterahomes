@@ -31,7 +31,7 @@ const heroObserver = new IntersectionObserver(
   { threshold: 0, rootMargin: '-72px 0px 0px 0px' }
 );
 
-heroObserver.observe(heroSection);
+if (heroSection) heroObserver.observe(heroSection);
 
 /* ---- Subnav: active section highlight --------------------- */
 const subnavLinks = document.querySelectorAll('.subnav-link');
@@ -213,7 +213,7 @@ const emailInput  = document.getElementById('femail');
 const nameError   = document.getElementById('nameError');
 const emailError  = document.getElementById('emailError');
 
-contactForm.addEventListener('submit', e => {
+if (contactForm) contactForm.addEventListener('submit', e => {
   e.preventDefault();
   let valid = true;
 
