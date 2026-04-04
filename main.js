@@ -143,6 +143,17 @@ document.querySelectorAll('.accordion-item').forEach(item => {
   });
 });
 
+/* ---- Suite features: deal-in animation -------------------- */
+const suiteGrid = document.querySelector('.suite-features-grid');
+if (suiteGrid) {
+  new IntersectionObserver(([entry], obs) => {
+    if (entry.isIntersecting) {
+      suiteGrid.classList.add('dealing');
+      obs.disconnect();
+    }
+  }, { threshold: 0.1 }).observe(suiteGrid);
+}
+
 /* ---- Reveal scroll animations ----------------------------- */
 const revealObserver = new IntersectionObserver(
   (entries) => {

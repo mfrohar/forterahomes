@@ -809,6 +809,75 @@ body.subnav-visible .subnav {
 }
 
 /* ============================================================
+   SUITE FEATURES (development page)
+   ============================================================ */
+.section-suite-features {
+  background: var(--charcoal);
+  padding: 5rem 0;
+}
+
+.suite-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.suite-feature-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(178,151,125,0.2);
+  padding: 2.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+  /* deal-in starting state */
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+}
+
+.suite-feature-item:hover {
+  background: rgba(178,151,125,0.12);
+  border-color: rgba(178,151,125,0.6);
+  transform: translateY(-5px) scale(1);
+}
+
+.suite-features-grid.dealing .suite-feature-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.45s ease, transform 0.45s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+/* stagger each card */
+.suite-features-grid.dealing .suite-feature-item:nth-child(1) { transition-delay: 0ms; }
+.suite-features-grid.dealing .suite-feature-item:nth-child(2) { transition-delay: 70ms; }
+.suite-features-grid.dealing .suite-feature-item:nth-child(3) { transition-delay: 140ms; }
+.suite-features-grid.dealing .suite-feature-item:nth-child(4) { transition-delay: 210ms; }
+.suite-features-grid.dealing .suite-feature-item:nth-child(5) { transition-delay: 280ms; }
+.suite-features-grid.dealing .suite-feature-item:nth-child(6) { transition-delay: 350ms; }
+.suite-features-grid.dealing .suite-feature-item:nth-child(7) { transition-delay: 420ms; }
+.suite-features-grid.dealing .suite-feature-item:nth-child(8) { transition-delay: 490ms; }
+
+.suite-feature-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+@media (max-width: 860px) {
+  .suite-features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .suite-feature-name { font-size: 1.2rem; }
+}
+
+/* ============================================================
    THE FORTERA WAY
    ============================================================ */
 .section-fortera-way {
