@@ -31,7 +31,7 @@ const heroObserver = new IntersectionObserver(
   { threshold: 0, rootMargin: '-72px 0px 0px 0px' }
 );
 
-heroObserver.observe(heroSection);
+if (heroSection) heroObserver.observe(heroSection);
 
 /* ---- Subnav: active section highlight --------------------- */
 const subnavLinks = document.querySelectorAll('.subnav-link');
@@ -87,6 +87,15 @@ const photoSrcs = [
   'assets/Bath2.jpg'
 ];
 
+const photoAlts = [
+  'Modern kitchen with premium finishes in a Beechwood Collection rental suite, Ottawa',
+  'Spacious bedroom in a 2 bedroom rental suite at 82 Genest St, Beechwood Ottawa',
+  'Bathroom with quality fixtures in a Beechwood Collection apartment, Ottawa',
+  'Open-plan living area in a Beechwood Collection rental suite, 82 Genest St Ottawa',
+  'Second bedroom in a 3 bedroom rental suite at Beechwood Collection, Ottawa',
+  'Second bathroom in an executive suite at Beechwood Collection, 82 Genest St Ottawa'
+];
+
 let lightboxIndex = 0;
 const lightbox = document.getElementById('photoLightbox');
 const lightboxImg = document.getElementById('lightboxImg');
@@ -95,6 +104,7 @@ const lightboxCounter = document.getElementById('lightboxCounter');
 function openLightbox(index) {
   lightboxIndex = index;
   lightboxImg.src = photoSrcs[lightboxIndex];
+  lightboxImg.alt = photoAlts[lightboxIndex];
   lightboxCounter.textContent = `${lightboxIndex + 1} of ${photoSrcs.length}`;
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -114,12 +124,14 @@ document.getElementById('lightboxClose')?.addEventListener('click', closeLightbo
 document.getElementById('lightboxNext')?.addEventListener('click', () => {
   lightboxIndex = (lightboxIndex + 1) % photoSrcs.length;
   lightboxImg.src = photoSrcs[lightboxIndex];
+  lightboxImg.alt = photoAlts[lightboxIndex];
   lightboxCounter.textContent = `${lightboxIndex + 1} of ${photoSrcs.length}`;
 });
 
 document.getElementById('lightboxPrev')?.addEventListener('click', () => {
   lightboxIndex = (lightboxIndex - 1 + photoSrcs.length) % photoSrcs.length;
   lightboxImg.src = photoSrcs[lightboxIndex];
+  lightboxImg.alt = photoAlts[lightboxIndex];
   lightboxCounter.textContent = `${lightboxIndex + 1} of ${photoSrcs.length}`;
 });
 
@@ -142,6 +154,17 @@ document.querySelectorAll('.accordion-item').forEach(item => {
     if (!isOpen) item.classList.add('open');
   });
 });
+
+/* ---- Suite features: deal-in animation -------------------- */
+const suiteGrid = document.querySelector('.suite-features-grid');
+if (suiteGrid) {
+  new IntersectionObserver(([entry], obs) => {
+    if (entry.isIntersecting) {
+      suiteGrid.classList.add('dealing');
+      obs.disconnect();
+    }
+  }, { threshold: 0.1 }).observe(suiteGrid);
+}
 
 /* ---- Reveal scroll animations ----------------------------- */
 const revealObserver = new IntersectionObserver(
@@ -213,7 +236,7 @@ const emailInput  = document.getElementById('femail');
 const nameError   = document.getElementById('nameError');
 const emailError  = document.getElementById('emailError');
 
-contactForm.addEventListener('submit', e => {
+if (contactForm) contactForm.addEventListener('submit', e => {
   e.preventDefault();
   let valid = true;
 
