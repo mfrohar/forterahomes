@@ -333,12 +333,25 @@ ul { list-style: none; }
   position: absolute;
   bottom: 2.5rem;
   left: 8vw;
+  right: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.6rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(245,240,235,0.28);
 }
+
+.nav-overlay-ig {
+  color: rgba(245,240,235,0.35);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+.nav-overlay-ig:hover { color: var(--bronze); }
 
 
 /* ============================================================
