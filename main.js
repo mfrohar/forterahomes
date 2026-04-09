@@ -2,22 +2,36 @@
    FORTERA HOMES — main.js
    ============================================================ */
 
-/* ---- Mobile menu ------------------------------------------ */
-const menuBtn    = document.getElementById('menuBtn');
-const navMobile  = document.getElementById('navMobile');
+/* ---- Full-screen nav overlay ------------------------------ */
+const menuBtn      = document.getElementById('menuBtn');
+const navOverlay   = document.getElementById('navOverlay');
+const overlayClose = document.getElementById('navOverlayClose');
 
-menuBtn.addEventListener('click', () => {
-  const open = navMobile.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', open);
-  navMobile.setAttribute('aria-hidden', !open);
+function openOverlay() {
+  navOverlay.classList.add('open');
+  navOverlay.setAttribute('aria-hidden', 'false');
+  menuBtn.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+  overlayClose.focus();
+}
+
+function closeOverlay() {
+  navOverlay.classList.remove('open');
+  navOverlay.setAttribute('aria-hidden', 'true');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  menuBtn.focus();
+}
+
+menuBtn.addEventListener('click', openOverlay);
+overlayClose.addEventListener('click', closeOverlay);
+
+navOverlay.querySelectorAll('.nav-overlay-link').forEach(link => {
+  link.addEventListener('click', closeOverlay);
 });
 
-navMobile.querySelectorAll('.nav-mobile-link').forEach(link => {
-  link.addEventListener('click', () => {
-    navMobile.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    navMobile.setAttribute('aria-hidden', 'true');
-  });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navOverlay.classList.contains('open')) closeOverlay();
 });
 
 
