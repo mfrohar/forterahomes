@@ -122,6 +122,13 @@ ul { list-style: none; }
   position: relative;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 120px;
+}
+
 .nav-lang {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.65rem;
@@ -131,8 +138,15 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  min-width: 120px;
 }
+
+.nav-ig {
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.nav-ig:hover { color: var(--bronze); }
 
 .nav-chevron { font-size: 0.55rem; }
 
