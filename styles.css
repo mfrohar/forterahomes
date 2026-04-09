@@ -1567,3 +1567,266 @@ body.subnav-visible .subnav {
   .hero-title-sub { font-size: 0.85rem; }
   .subnav-links { display: none; }
 }
+
+/* =====================================================================
+   BLOG
+   ===================================================================== */
+
+/* --- Blog listing page --- */
+.blog-section {
+  background: var(--cream);
+  padding: 6rem 2rem 8rem;
+}
+.blog-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.blog-section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.blog-section-header .section-label {
+  margin-bottom: 1rem;
+}
+.blog-section-header .section-h2 {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.95;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.blog-card {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--charcoal);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(28,26,24,0.1);
+}
+.blog-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.blog-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.blog-card:hover .blog-card-img img {
+  transform: scale(1.04);
+}
+.blog-card-body {
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.blog-card-date {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 0.75rem;
+}
+.blog-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.9rem;
+}
+.blog-card-excerpt {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(28,26,24,0.7);
+  flex: 1;
+}
+.blog-card-read-more {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin-top: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--charcoal);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.blog-card:hover .blog-card-read-more {
+  color: var(--bronze);
+  border-color: var(--bronze);
+}
+
+/* --- Blog post page --- */
+.blog-post-hero {
+  width: 100%;
+  height: 55vh;
+  min-height: 340px;
+  max-height: 600px;
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--nav-h);
+}
+.blog-post-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.blog-post-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(28,26,24,0.15) 0%, rgba(28,26,24,0.45) 100%);
+}
+
+.blog-post-section {
+  background: var(--cream);
+  padding: 5rem 2rem 8rem;
+}
+.blog-post-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.blog-post-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  transition: color 0.2s;
+}
+.blog-post-back:hover { color: var(--charcoal); }
+.blog-post-back svg { flex-shrink: 0; }
+
+.blog-post-meta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 1rem;
+}
+
+.blog-post-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--charcoal);
+  margin: 0 0 2.5rem;
+}
+
+.blog-post-divider {
+  border: none;
+  border-top: 1px solid rgba(28,26,24,0.15);
+  margin-bottom: 2.5rem;
+}
+
+/* Blog post body typography */
+.blog-post-body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--charcoal);
+}
+.blog-post-body p {
+  margin: 0 0 1.4em;
+}
+.blog-post-body h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin: 2.5em 0 0.75em;
+}
+.blog-post-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  line-height: 1.15;
+  color: var(--charcoal);
+  margin: 2em 0 0.6em;
+}
+.blog-post-body ul,
+.blog-post-body ol {
+  margin: 0 0 1.4em 1.2em;
+  padding: 0;
+}
+.blog-post-body li {
+  margin-bottom: 0.5em;
+}
+.blog-post-body strong {
+  font-weight: 600;
+}
+.blog-post-body a {
+  color: var(--bronze);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.blog-post-body a:hover { color: var(--charcoal); }
+
+.blog-post-cta {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  background: var(--blush);
+  text-align: center;
+}
+.blog-post-cta p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin: 0 0 1.25rem;
+}
+.blog-post-cta .section-h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin: 0 0 1.5rem;
+}
+
+/* Blog responsive */
+@media (max-width: 900px) {
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-section { padding: 4rem 1.5rem 6rem; }
+}
+@media (max-width: 600px) {
+  .blog-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .blog-section { padding: 3rem 1.25rem 5rem; }
+  .blog-post-section { padding: 3rem 1.25rem 5rem; }
+  .blog-post-hero { height: 45vw; min-height: 200px; }
+}
