@@ -144,10 +144,9 @@ ul { list-style: none; }
   color: var(--charcoal);
   display: flex;
   align-items: center;
-  opacity: 0.6;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
 }
-.nav-ig:hover { opacity: 1; }
+.nav-ig:hover { color: var(--bronze); }
 
 .nav-chevron { font-size: 0.55rem; }
 
