@@ -259,7 +259,7 @@ if (contactForm) contactForm.addEventListener('submit', e => {
 
   if (valid) {
     contactForm.hidden = true;
-    formSuccess.hidden = false;
+    formSuccess.innerHTML = '<h3 class="form-success-title">Thank You</h3><p class="form-success-body">We\'ve received your registration and will be in touch shortly.</p>';
   }
 });
 
