@@ -67,6 +67,38 @@
       color: var(--white);
     }
 
+    /* Intro text: two-column editorial block */
+    .gallery-text {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 3.5rem 3rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .gallery-text-hed {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.2vw, 3.4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.1;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .gallery-text-body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.95;
+      color: rgba(255, 255, 255, 0.52);
+      letter-spacing: 0.04em;
+      padding-top: 0.35rem;
+    }
+
     /* Group: header + grid */
     .gallery-group {
       margin-bottom: 3px;
@@ -295,6 +327,11 @@
 
     /* Tablet: 2-col grids */
     @media (max-width: 860px) {
+      .gallery-text {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 3rem 1.5rem 4rem;
+      }
       .gallery-group-header { padding: 2rem 1.5rem 1rem; }
 
       .gallery-grid--ext {
@@ -395,6 +432,12 @@
     <div class="gallery-intro reveal">
       <p class="section-label">82 GENEST ST &mdash; BEECHWOOD, OTTAWA</p>
       <h1 class="section-h2">GALLERY.</h1>
+    </div>
+
+    <!-- INTRO TEXT -->
+    <div class="gallery-text reveal">
+      <h2 class="gallery-text-hed">Picture Yourself<br>at Beechwood</h2>
+      <p class="gallery-text-body">This is where thoughtful design meets the energy of one of Ottawa's most beloved neighbourhoods. Beechwood Collection — 82 Genest St — was built for those who refuse to compromise. Soaring ceilings, generous square footage, and an abundance of natural light define every home. Browse through our gallery and imagine the life that awaits.</p>
     </div>
 
     <!-- EXTERIORS -->
