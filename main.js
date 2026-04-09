@@ -140,7 +140,7 @@ lightbox?.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('active')) return;
+  if (!lightbox || !lightbox.classList.contains('active')) return;
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
   if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();

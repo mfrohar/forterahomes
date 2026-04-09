@@ -39,6 +39,304 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
+  <style>
+    /* ============================================================
+       GALLERY PAGE
+       ============================================================ */
+
+    body.gallery-body {
+      background: var(--charcoal);
+    }
+
+    .section-gallery {
+      padding-top: calc(var(--nav-h) + 44px); /* nav + subnav */
+      background: var(--charcoal);
+    }
+
+    /* Intro */
+    .gallery-intro {
+      text-align: center;
+      padding: 3.5rem 2rem 3rem;
+    }
+
+    .gallery-intro .section-label {
+      margin-bottom: 0.75rem;
+    }
+
+    .gallery-intro .section-h2 {
+      color: var(--white);
+    }
+
+    /* Group: header + grid */
+    .gallery-group {
+      margin-bottom: 3px;
+    }
+
+    .gallery-group-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2.5rem 3rem 1.25rem;
+    }
+
+    .gallery-group-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      white-space: nowrap;
+    }
+
+    .gallery-group-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Base grid */
+    .gallery-grid {
+      display: grid;
+      gap: 3px;
+      background: var(--charcoal); /* gap colour */
+    }
+
+    /* — EXTERIORS: 3-col, 2-row asymmetric — */
+    .gallery-grid--ext {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 400px 260px;
+    }
+    /* rendering: left 2 cols, full height of row 1 */
+    .gal-ext-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+    /* frontday: right col, row 1 */
+    .gal-ext-2 { grid-column: 3 / 4; grid-row: 1 / 2; }
+    /* frontnight: left col, row 2 */
+    .gal-ext-3 { grid-column: 1 / 2; grid-row: 2 / 3; }
+    /* back: right 2 cols, row 2 — panoramic */
+    .gal-ext-4 { grid-column: 2 / 4; grid-row: 2 / 3; }
+
+    /* — INTERIORS: 3-col, 3-row asymmetric — */
+    .gallery-grid--int {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 360px 300px 300px;
+    }
+    /* kitchen: left 2 cols, row 1 — hero shot */
+    .gal-int-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+    /* Bed1: right col, row 1 */
+    .gal-int-2 { grid-column: 3 / 4; grid-row: 1 / 2; }
+    /* Bath1: left col, row 2 */
+    .gal-int-3 { grid-column: 1 / 2; grid-row: 2 / 3; }
+    /* living2: right 2 cols, row 2 */
+    .gal-int-4 { grid-column: 2 / 4; grid-row: 2 / 3; }
+    /* Bed2: left 2 cols, row 3 */
+    .gal-int-5 { grid-column: 1 / 3; grid-row: 3 / 4; }
+    /* Bath2: right col, row 3 */
+    .gal-int-6 { grid-column: 3 / 4; grid-row: 3 / 4; }
+
+    /* Grid item */
+    .gal-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: block;
+    }
+
+    .gal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Hover overlay + caption */
+    .gal-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(28, 26, 24, 0.72) 0%,
+        rgba(28, 26, 24, 0.1) 45%,
+        rgba(28, 26, 24, 0) 70%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem 1.75rem;
+    }
+
+    .gal-caption {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.88);
+      transform: translateY(7px);
+      transition: transform 0.4s ease;
+    }
+
+    .gal-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gal-item:hover .gal-overlay {
+      opacity: 1;
+    }
+
+    .gal-item:hover .gal-caption {
+      transform: translateY(0);
+    }
+
+    /* Bottom spacer before footer */
+    .gallery-spacer {
+      height: 80px;
+      background: var(--charcoal);
+    }
+
+    /* ============================================================
+       GALLERY LIGHTBOX
+       ============================================================ */
+    .gal-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 12, 10, 0.96);
+      z-index: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gal-lightbox[hidden] {
+      display: none;
+    }
+
+    .gal-lb-wrap {
+      max-width: 90vw;
+      max-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gal-lb-img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .gal-lb-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      line-height: 1;
+      transition: color 0.2s;
+      z-index: 1;
+    }
+    .gal-lb-close:hover { color: var(--white); }
+
+    .gal-lb-prev,
+    .gal-lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 1.25rem 1.5rem;
+      line-height: 1;
+      transition: color 0.2s;
+      z-index: 1;
+    }
+    .gal-lb-prev:hover,
+    .gal-lb-next:hover { color: var(--white); }
+    .gal-lb-prev { left: 1rem; }
+    .gal-lb-next { right: 1rem; }
+
+    .gal-lb-counter {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      color: rgba(255, 255, 255, 0.35);
+      white-space: nowrap;
+    }
+
+    .gal-lb-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      white-space: nowrap;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+
+    /* Tablet: 2-col grids */
+    @media (max-width: 860px) {
+      .gallery-group-header { padding: 2rem 1.5rem 1rem; }
+
+      .gallery-grid--ext {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 240px 200px 200px;
+      }
+      .gal-ext-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+      .gal-ext-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+      .gal-ext-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+      .gal-ext-4 { grid-column: 1 / 3; grid-row: 3 / 4; }
+
+      .gallery-grid--int {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 220px 220px 220px;
+      }
+      .gal-int-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+      .gal-int-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+      .gal-int-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+      .gal-int-4 { grid-column: 1 / 3; grid-row: 3 / 4; }
+      .gal-int-5 { grid-column: 1 / 2; grid-row: 4 / 5; }
+      .gal-int-6 { grid-column: 2 / 3; grid-row: 4 / 5; }
+    }
+
+    /* Mobile: single column */
+    @media (max-width: 480px) {
+      .gallery-intro { padding: 2.5rem 1.25rem 2rem; }
+
+      .gallery-grid--ext,
+      .gallery-grid--int {
+        grid-template-columns: 1fr;
+        grid-template-rows: unset;
+      }
+      .gal-ext-1, .gal-ext-2, .gal-ext-3, .gal-ext-4,
+      .gal-int-1, .gal-int-2, .gal-int-3,
+      .gal-int-4, .gal-int-5, .gal-int-6 {
+        grid-column: 1 / 2;
+        grid-row: unset;
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7X71SV3ET6"></script>
   <script>
@@ -52,7 +350,7 @@
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body>
+<body class="gallery-body">
 
   <!-- ===================== NAV ===================== -->
   <nav id="nav" class="nav">
@@ -76,7 +374,7 @@
   </nav>
 
   <!-- ===================== STICKY SUBNAV ===================== -->
-  <div class="subnav subnav-visible" id="subnav" aria-hidden="false">
+  <div class="subnav" id="subnav" aria-hidden="false">
     <div class="subnav-title">BEECHWOOD COLLECTION &mdash; 82 GENEST ST</div>
     <nav class="subnav-links">
       <a href="/floorplans" class="subnav-link">FLOORPLANS</a>
@@ -92,11 +390,87 @@
   </div>
 
   <!-- ===================== GALLERY ===================== -->
-  <section id="gallery" class="section-neighbourhood reveal" style="padding-top: 80px;">
-    <div class="container">
-      <p class="section-label text-center">BEECHWOOD, OTTAWA</p>
-      <h1 class="section-h2 text-center">GALLERY.</h1>
+  <section class="section-gallery">
+
+    <div class="gallery-intro reveal">
+      <p class="section-label">82 GENEST ST &mdash; BEECHWOOD, OTTAWA</p>
+      <h1 class="section-h2">GALLERY.</h1>
     </div>
+
+    <!-- EXTERIORS -->
+    <div class="gallery-group reveal">
+      <div class="gallery-group-header">
+        <span class="gallery-group-label">EXTERIORS</span>
+        <div class="gallery-group-line"></div>
+      </div>
+      <div class="gallery-grid gallery-grid--ext">
+
+        <div class="gal-item gal-ext-1" data-index="0">
+          <img src="assets/rendering_updated.jpeg" alt="Architectural rendering of Beechwood Collection, 82 Genest St, Ottawa">
+          <div class="gal-overlay"><span class="gal-caption">Architectural Rendering</span></div>
+        </div>
+
+        <div class="gal-item gal-ext-2" data-index="1">
+          <img src="assets/frontday.jpg" alt="Beechwood Collection front exterior, daytime — 82 Genest St, Ottawa">
+          <div class="gal-overlay"><span class="gal-caption">Front Exterior &mdash; Daytime</span></div>
+        </div>
+
+        <div class="gal-item gal-ext-3" data-index="2">
+          <img src="assets/frontnight.jpg" alt="Beechwood Collection front exterior at night — 82 Genest St, Ottawa">
+          <div class="gal-overlay"><span class="gal-caption">Front Exterior &mdash; Evening</span></div>
+        </div>
+
+        <div class="gal-item gal-ext-4" data-index="3">
+          <img src="assets/back.jpg" alt="Beechwood Collection rear exterior — 82 Genest St, Ottawa">
+          <div class="gal-overlay"><span class="gal-caption">Rear Exterior</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- INTERIORS -->
+    <div class="gallery-group reveal">
+      <div class="gallery-group-header">
+        <span class="gallery-group-label">INTERIORS</span>
+        <div class="gallery-group-line"></div>
+      </div>
+      <div class="gallery-grid gallery-grid--int">
+
+        <div class="gal-item gal-int-1" data-index="4">
+          <img src="assets/kitchen.jpg" alt="Open kitchen with premium finishes, Beechwood Collection suite">
+          <div class="gal-overlay"><span class="gal-caption">Open Kitchen</span></div>
+        </div>
+
+        <div class="gal-item gal-int-2" data-index="5">
+          <img src="assets/Bed1.jpg" alt="Primary suite bedroom, Beechwood Collection">
+          <div class="gal-overlay"><span class="gal-caption">Primary Suite</span></div>
+        </div>
+
+        <div class="gal-item gal-int-3" data-index="6">
+          <img src="assets/Bath1.jpg" alt="Main bathroom with quality fixtures, Beechwood Collection">
+          <div class="gal-overlay"><span class="gal-caption">Main Bathroom</span></div>
+        </div>
+
+        <div class="gal-item gal-int-4" data-index="7">
+          <img src="assets/living2.jpg" alt="Open-plan living room, Beechwood Collection">
+          <div class="gal-overlay"><span class="gal-caption">Living Room</span></div>
+        </div>
+
+        <div class="gal-item gal-int-5" data-index="8">
+          <img src="assets/Bed2.jpg" alt="Second bedroom, Beechwood Collection">
+          <div class="gal-overlay"><span class="gal-caption">Second Bedroom</span></div>
+        </div>
+
+        <div class="gal-item gal-int-6" data-index="9">
+          <img src="assets/Bath2.jpg" alt="Ensuite bathroom, Beechwood Collection executive suite">
+          <div class="gal-overlay"><span class="gal-caption">Ensuite Bath</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="gallery-spacer"></div>
+
   </section>
 
   <!-- ===================== FOOTER ===================== -->
@@ -115,6 +489,71 @@
     </div>
   </footer>
 
+  <!-- ===================== GALLERY LIGHTBOX ===================== -->
+  <div class="gal-lightbox" id="galLightbox" hidden>
+    <button class="gal-lb-close" id="galLbClose">&#10005;</button>
+    <button class="gal-lb-prev" id="galLbPrev">&#8592;</button>
+    <button class="gal-lb-next" id="galLbNext">&#8594;</button>
+    <div class="gal-lb-wrap">
+      <img class="gal-lb-img" id="galLbImg" alt="">
+    </div>
+    <div class="gal-lb-counter" id="galLbCounter"></div>
+  </div>
+
+  <script>
+    /* ---- Gallery lightbox ------------------------------------ */
+    const galImages = [
+      { src: 'assets/rendering_updated.jpeg', alt: 'Architectural rendering of Beechwood Collection, 82 Genest St, Ottawa' },
+      { src: 'assets/frontday.jpg',           alt: 'Front exterior, daytime — Beechwood Collection, 82 Genest St' },
+      { src: 'assets/frontnight.jpg',         alt: 'Front exterior, evening — Beechwood Collection, 82 Genest St' },
+      { src: 'assets/back.jpg',               alt: 'Rear exterior — Beechwood Collection, 82 Genest St' },
+      { src: 'assets/kitchen.jpg',            alt: 'Open kitchen with premium finishes — Beechwood Collection' },
+      { src: 'assets/Bed1.jpg',               alt: 'Primary suite — Beechwood Collection' },
+      { src: 'assets/Bath1.jpg',              alt: 'Main bathroom — Beechwood Collection' },
+      { src: 'assets/living2.jpg',            alt: 'Living room — Beechwood Collection' },
+      { src: 'assets/Bed2.jpg',               alt: 'Second bedroom — Beechwood Collection' },
+      { src: 'assets/Bath2.jpg',              alt: 'Ensuite bath — Beechwood Collection executive suite' },
+    ];
+
+    let galIdx = 0;
+    const galLb      = document.getElementById('galLightbox');
+    const galLbImg   = document.getElementById('galLbImg');
+    const galLbCount = document.getElementById('galLbCounter');
+
+    function galOpen(idx) {
+      galIdx = ((idx % galImages.length) + galImages.length) % galImages.length;
+      galLbImg.src = galImages[galIdx].src;
+      galLbImg.alt = galImages[galIdx].alt;
+      galLbCount.textContent = (galIdx + 1) + ' \u2014 ' + galImages.length;
+      galLb.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function galClose() {
+      galLb.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.gal-item').forEach(item => {
+      item.addEventListener('click', () => galOpen(parseInt(item.dataset.index, 10)));
+    });
+
+    document.getElementById('galLbClose').addEventListener('click', galClose);
+    document.getElementById('galLbPrev').addEventListener('click', () => galOpen(galIdx - 1));
+    document.getElementById('galLbNext').addEventListener('click', () => galOpen(galIdx + 1));
+
+    galLb.addEventListener('click', e => { if (e.target === galLb) galClose(); });
+
+    document.addEventListener('keydown', e => {
+      if (galLb.hidden) return;
+      if (e.key === 'Escape')     galClose();
+      if (e.key === 'ArrowLeft')  galOpen(galIdx - 1);
+      if (e.key === 'ArrowRight') galOpen(galIdx + 1);
+    });
+
+    /* ---- Show subnav on page load (no hero section) ---------- */
+    document.body.classList.add('subnav-visible');
+  </script>
   <script src="main.js"></script>
 </body>
 </html>
