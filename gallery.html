@@ -49,7 +49,7 @@
     }
 
     .section-gallery {
-      padding-top: calc(var(--nav-h) + 44px); /* nav + subnav */
+      padding-top: var(--nav-h);
       background: var(--charcoal);
     }
 
@@ -379,23 +379,6 @@
     </div>
   </nav>
 
-  <!-- ===================== STICKY SUBNAV ===================== -->
-  <div class="subnav" id="subnav" aria-hidden="false">
-    <div class="subnav-title">BEECHWOOD COLLECTION &mdash; 82 GENEST ST</div>
-    <nav class="subnav-links">
-      <a href="/floorplans" class="subnav-link">FLOORPLANS</a>
-      <span class="subnav-sep">&middot;</span>
-      <a href="/gallery" class="subnav-link active">GALLERY</a>
-      <span class="subnav-sep">&middot;</span>
-      <a href="/neighbourhood" class="subnav-link">NEIGHBOURHOOD</a>
-      <span class="subnav-sep">&middot;</span>
-      <a href="/register" class="subnav-link">REGISTER</a>
-      <span class="subnav-sep">&middot;</span>
-      <a href="/blog" class="subnav-link">BLOG</a>
-      <span class="subnav-sep">&middot;</span>
-      <a href="/about" class="subnav-link">ABOUT US</a>
-    </nav>
-  </div>
 
   <!-- ===================== GALLERY ===================== -->
   <section class="section-gallery">
@@ -560,9 +543,7 @@
       if (e.key === 'ArrowRight') galOpen(galIdx + 1);
     });
 
-    /* ---- Show subnav on page load (no hero section) ---------- */
-    document.body.classList.add('subnav-visible');
-  </script>
+</script>
   <script src="main.js"></script>
 </body>
 </html>
