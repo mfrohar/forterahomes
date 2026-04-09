@@ -31,7 +31,13 @@ const heroObserver = new IntersectionObserver(
   { threshold: 0, rootMargin: '-72px 0px 0px 0px' }
 );
 
-if (heroSection) heroObserver.observe(heroSection);
+if (heroSection) {
+  heroObserver.observe(heroSection);
+} else {
+  document.body.classList.add('subnav-visible');
+  const subnav = document.getElementById('subnav');
+  if (subnav) subnav.setAttribute('aria-hidden', 'false');
+}
 
 /* ---- Subnav: active section highlight --------------------- */
 const subnavLinks = document.querySelectorAll('.subnav-link');
