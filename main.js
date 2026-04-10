@@ -2,58 +2,39 @@
    FORTERA HOMES — main.js
    ============================================================ */
 
-/* ---- Mobile menu ------------------------------------------ */
-const menuBtn    = document.getElementById('menuBtn');
-const navMobile  = document.getElementById('navMobile');
+/* ---- Full-screen nav overlay ------------------------------ */
+const menuBtn      = document.getElementById('menuBtn');
+const navOverlay   = document.getElementById('navOverlay');
+const navOverlayClose = document.getElementById('navOverlayClose');
+
+function openOverlay() {
+  navOverlay.classList.add('open');
+  navOverlay.setAttribute('aria-hidden', 'false');
+  menuBtn.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOverlay() {
+  navOverlay.classList.remove('open');
+  navOverlay.setAttribute('aria-hidden', 'true');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
 
 menuBtn.addEventListener('click', () => {
-  const open = navMobile.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', open);
-  navMobile.setAttribute('aria-hidden', !open);
+  navOverlay.classList.contains('open') ? closeOverlay() : openOverlay();
 });
 
-navMobile.querySelectorAll('.nav-mobile-link').forEach(link => {
-  link.addEventListener('click', () => {
-    navMobile.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    navMobile.setAttribute('aria-hidden', 'true');
-  });
+navOverlayClose.addEventListener('click', closeOverlay);
+
+navOverlay.querySelectorAll('.nav-overlay-link').forEach(link => {
+  link.addEventListener('click', closeOverlay);
 });
 
-/* ---- Subnav: show/hide based on hero visibility ----------- */
-const heroSection = document.getElementById('hero');
-
-const heroObserver = new IntersectionObserver(
-  ([entry]) => {
-    document.body.classList.toggle('subnav-visible', !entry.isIntersecting);
-    document.getElementById('subnav').setAttribute('aria-hidden', entry.isIntersecting);
-  },
-  { threshold: 0, rootMargin: '-72px 0px 0px 0px' }
-);
-
-if (heroSection) heroObserver.observe(heroSection);
-
-/* ---- Subnav: active section highlight --------------------- */
-const subnavLinks = document.querySelectorAll('.subnav-link');
-
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        subnavLinks.forEach(link => {
-          link.classList.toggle('active', link.dataset.section === id);
-        });
-      }
-    });
-  },
-  { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' }
-);
-
-['development', 'neighbourhood', 'about', 'contact'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) sectionObserver.observe(el);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && navOverlay.classList.contains('open')) closeOverlay();
 });
+
 
 /* ---- Unit filter tabs ------------------------------------- */
 document.querySelectorAll('.unit-filter-tab').forEach(tab => {
