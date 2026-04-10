@@ -35,40 +35,6 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && navOverlay.classList.contains('open')) closeOverlay();
 });
 
-/* ---- Subnav: show/hide based on hero visibility ----------- */
-const heroSection = document.getElementById('hero');
-
-const heroObserver = new IntersectionObserver(
-  ([entry]) => {
-    document.body.classList.toggle('subnav-visible', !entry.isIntersecting);
-    document.getElementById('subnav').setAttribute('aria-hidden', entry.isIntersecting);
-  },
-  { threshold: 0, rootMargin: '-72px 0px 0px 0px' }
-);
-
-if (heroSection) heroObserver.observe(heroSection);
-
-/* ---- Subnav: active section highlight --------------------- */
-const subnavLinks = document.querySelectorAll('.subnav-link');
-
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        subnavLinks.forEach(link => {
-          link.classList.toggle('active', link.dataset.section === id);
-        });
-      }
-    });
-  },
-  { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' }
-);
-
-['development', 'neighbourhood', 'about', 'contact'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) sectionObserver.observe(el);
-});
 
 /* ---- Unit filter tabs ------------------------------------- */
 document.querySelectorAll('.unit-filter-tab').forEach(tab => {
