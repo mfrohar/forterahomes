@@ -29,4 +29,46 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://forterahomes.ca/blog</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://forterahomes.ca/blog/2-3-bedroom-rentals-beechwood-ottawa</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://forterahomes.ca/blog/beechwood-ottawa-underrated-rental-neighbourhood</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://forterahomes.ca/blog/affordable-large-units-ottawa-beechwood</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://forterahomes.ca/blog/beechwood-vs-ottawa-neighbourhoods-renters</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://forterahomes.ca/blog/renting-large-unit-ottawa-guide</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
