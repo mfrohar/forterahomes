@@ -2,6 +2,8 @@
    FORTERA HOMES — main.js
    ============================================================ */
 
+document.addEventListener('DOMContentLoaded', () => {
+
 /* ---- Full-screen nav overlay ------------------------------ */
 const menuBtn      = document.getElementById('menuBtn');
 const navOverlay   = document.getElementById('navOverlay');
@@ -243,4 +245,6 @@ if (contactForm) contactForm.addEventListener('submit', e => {
     formSuccess.innerHTML = '<h3 class="form-success-title">Thank You</h3><p class="form-success-body">We\'ve received your registration and will be in touch shortly.</p>';
   }
 });
+
+}); // end DOMContentLoaded
 
