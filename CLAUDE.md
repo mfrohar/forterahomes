@@ -17,7 +17,8 @@
 
 ### Example flow
 ```bash
-git checkout -b feature/my-change origin/staging
+git checkout staging && git pull origin staging
+git checkout -b feature/my-change
 # ... make changes ...
 git push origin feature/my-change
 gh pr create --base staging --title "My change" --body "..."
