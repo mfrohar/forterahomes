@@ -23,34 +23,6 @@
   </url>
 
   <url>
-    <loc>https://forterahomes.ca/floorplans</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://forterahomes.ca/gallery</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://forterahomes.ca/neighbourhood</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://forterahomes.ca/register</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://forterahomes.ca/expertise</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
