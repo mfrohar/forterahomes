@@ -993,7 +993,7 @@ ul { list-style: none; }
 .register-inner { max-width: 1280px; margin: 0 auto; padding: 0 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
 .register-cta-inner { max-width: 680px; margin: 0 auto; padding: 0 3rem; text-align: center; }
 .register-cta-inner .section-label { color: var(--bronze-light); }
-.register-cta-inner .section-h2 { color: var(--white); font-size: clamp(2rem, 3.5vw, 3.2rem); }
+.register-cta-inner .section-h2 { color: var(--white); font-size: clamp(3rem, 6vw, 5rem); }
 .register-desc { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; line-height: 1.9; color: rgba(255,255,255,0.52); margin-top: 1.5rem; }
 .btn-register-cta { display: inline-block; margin-top: 2.5rem; background: var(--bronze); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 1.1rem 2.75rem; border: 1px solid var(--bronze); transition: background 0.25s ease, color 0.25s ease; }
 .btn-register-cta:hover { background: transparent; color: var(--white); }
