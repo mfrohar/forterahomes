@@ -1111,7 +1111,8 @@ ul { list-style: none; }
   .footer-wordmark { display: none; }
   .home-project-inner { grid-template-columns: 1fr; gap: 3rem; }
   .home-project-images { grid-template-columns: 1fr 1fr; }
-  .home-project-img--tall { grid-row: span 1; aspect-ratio: 4/3; }
+  .home-project-img--tall { grid-column: 1 / 3; grid-row: span 1; aspect-ratio: 16/9; }
+  .home-project-img--short { aspect-ratio: 4/3; }
   .home-expertise-grid { grid-template-columns: 1fr; }
   .home-blog-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 }
