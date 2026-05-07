@@ -16,7 +16,7 @@
 .site-intro.is-exiting { opacity: 0; pointer-events: none; }
 .site-intro-logo {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 2rem;
   letter-spacing: 0.04em;
   color: #fff;
@@ -195,7 +195,7 @@ ul { list-style: none; }
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.85rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--white);
   flex-shrink: 0;
