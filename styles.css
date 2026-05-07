@@ -1099,6 +1099,7 @@ ul { list-style: none; }
    ============================================================ */
 @media (max-width: 1024px) {
   .nav-links { display: none; }
+  .nav-cta { display: none; }
   .nav-menu-btn { display: flex; }
   .overview-inner { grid-template-columns: 1fr; gap: 3rem; }
   .overview-image { order: -1; }
