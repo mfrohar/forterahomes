@@ -1028,8 +1028,8 @@ ul { list-style: none; }
 /* ============================================================
    EXPERTISE PAGE
    ============================================================ */
-.section-expertise-hero { padding-top: calc(var(--nav-h) + 5rem); padding-bottom: 5rem; background: var(--cream); }
-.section-expertise { padding: 4rem 0 7rem; background: var(--cream); }
+.section-expertise-hero { padding-top: calc(var(--nav-h) + 5rem); padding-bottom: 2rem; background: var(--cream); }
+.section-expertise { padding: 1.5rem 0 7rem; background: var(--cream); }
 .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 3rem; }
 .expertise-card { background: var(--cream); padding: 3rem 2.5rem; border-right: 1px solid var(--sand); border-bottom: 1px solid var(--sand); transition: background 0.3s ease; }
 .expertise-card:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
