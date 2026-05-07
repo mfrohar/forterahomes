@@ -3,77 +3,98 @@
 
   <url>
     <loc>https://forterahomes.ca/</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://forterahomes.ca/floorplans</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://forterahomes.ca/projects</loc>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
+    <loc>https://forterahomes.ca/projects/beechwood-collection</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://forterahomes.ca/floorplans</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://forterahomes.ca/gallery</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://forterahomes.ca/neighbourhood</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://forterahomes.ca/register</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
+    <loc>https://forterahomes.ca/expertise</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://forterahomes.ca/blog</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://forterahomes.ca/blog/2-3-bedroom-rentals-beechwood-ottawa</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://forterahomes.ca/blog/beechwood-ottawa-underrated-rental-neighbourhood</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://forterahomes.ca/blog/affordable-large-units-ottawa-beechwood</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://forterahomes.ca/blog/beechwood-vs-ottawa-neighbourhoods-renters</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://forterahomes.ca/blog/renting-large-unit-ottawa-guide</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
