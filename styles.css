@@ -2,6 +2,38 @@
    FORTERA HOMES — styles.css
    ============================================================ */
 
+/* ============================================================
+   SITE INTRO ANIMATION
+   ============================================================ */
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: var(--charcoal);
+  transition: opacity 0.5s ease;
+  pointer-events: all;
+}
+.site-intro.is-exiting { opacity: 0; pointer-events: none; }
+.site-intro-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  position: fixed;
+  white-space: nowrap;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+}
+.site-intro-logo.is-moving {
+  transition:
+    left   0.9s cubic-bezier(0.76, 0, 0.24, 1),
+    top    0.9s cubic-bezier(0.76, 0, 0.24, 1),
+    font-size   0.9s cubic-bezier(0.76, 0, 0.24, 1),
+    letter-spacing 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
 /* --- Variables -------------------------------------------- */
 :root {
   --charcoal: #1c1a18;
@@ -92,7 +124,7 @@ ul { list-style: none; }
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  border-radius: 0;
+  border-radius: 50px;
   transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   white-space: nowrap;
   cursor: pointer;
@@ -204,6 +236,7 @@ ul { list-style: none; }
   background: var(--bronze);
   border: 1px solid var(--bronze);
   padding: 0.65rem 1.4rem;
+  border-radius: 50px;
   transition: background 0.25s ease, border-color 0.25s ease;
   display: inline-block;
 }
