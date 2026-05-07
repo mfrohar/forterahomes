@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull *)",
+      "Bash(git checkout *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(mkdir -p /tmp/fortera-site/assets /tmp/fortera-site/projects /tmp/fortera-site/blog)",
+      "Bash(cp index.html styles.css main.js vercel.json about.html expertise.html projects.html /tmp/fortera-site/)",
+      "Bash(cp projects/beechwood-collection.html /tmp/fortera-site/projects/)",
+      "Bash(cp blog/index.html /tmp/fortera-site/blog/)",
+      "Bash(cp -r assets/ /tmp/fortera-site/assets/)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(cp ~/Desktop/landingpage1.jpg assets/)",
+      "Bash(cp ~/Desktop/landingpage1.jpg /tmp/fortera-site/assets/)",
+      "Bash(git add *)",
+      "Bash(git log *)",
+      "Bash(git rebase *)",
+      "Bash(GIT_SEQUENCE_EDITOR=: git -c sequence.editor=: rebase --abort)",
+      "Bash(git stash *)",
+      "Bash(git reset *)",
+      "Bash(git push *)",
+      "Bash(cp \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/styles.css\" /tmp/fortera-site/styles.css)",
+      "Bash(cp \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/blog/index.html\" /tmp/fortera-site/blog/index.html)",
+      "Read(//Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claire/worktrees/dazzling-shannon-0746cb/blog/**)",
+      "Bash(sed -n '100,200p' \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/blog/beechwood-ottawa-underrated-rental-neighbourhood.html\")",
+      "Bash(cp -r \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/blog/\" /tmp/fortera-site/blog/)",
+      "Bash(xargs kill *)",
+      "Bash(git rm *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}
