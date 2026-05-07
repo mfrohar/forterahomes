@@ -4,247 +4,276 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-/* ---- Full-screen nav overlay ------------------------------ */
+/* ---- Nav scroll behaviour --------------------------------- */
+const nav = document.getElementById('nav');
+if (nav) {
+  const heroEl = document.querySelector('.hero');
+  const isHeroPage = !!heroEl;
+
+  function updateNav() {
+    if (isHeroPage) {
+      if (window.scrollY > 60) {
+        nav.classList.remove('nav--transparent');
+        nav.classList.add('nav--solid');
+      } else {
+        nav.classList.add('nav--transparent');
+        nav.classList.remove('nav--solid');
+      }
+    }
+  }
+
+  if (isHeroPage) {
+    nav.classList.add('nav--transparent');
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  } else {
+    nav.classList.add('nav--light');
+  }
+}
+
+/* ---- Nav overlay ------------------------------------------ */
 const menuBtn      = document.getElementById('menuBtn');
 const navOverlay   = document.getElementById('navOverlay');
 const navOverlayClose = document.getElementById('navOverlayClose');
 
 function openOverlay() {
+  if (!navOverlay) return;
   navOverlay.classList.add('open');
   navOverlay.setAttribute('aria-hidden', 'false');
-  menuBtn.setAttribute('aria-expanded', 'true');
+  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
   document.body.style.overflow = 'hidden';
 }
 
 function closeOverlay() {
+  if (!navOverlay) return;
   navOverlay.classList.remove('open');
   navOverlay.setAttribute('aria-hidden', 'true');
-  menuBtn.setAttribute('aria-expanded', 'false');
+  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 }
 
-menuBtn.addEventListener('click', () => {
-  navOverlay.classList.contains('open') ? closeOverlay() : openOverlay();
-});
-
-navOverlayClose.addEventListener('click', closeOverlay);
-
-navOverlay.querySelectorAll('.nav-overlay-link').forEach(link => {
-  link.addEventListener('click', closeOverlay);
-});
-
+if (menuBtn) menuBtn.addEventListener('click', () => navOverlay.classList.contains('open') ? closeOverlay() : openOverlay());
+if (navOverlayClose) navOverlayClose.addEventListener('click', closeOverlay);
+if (navOverlay) {
+  navOverlay.querySelectorAll('.nav-overlay-link').forEach(link => link.addEventListener('click', closeOverlay));
+}
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && navOverlay.classList.contains('open')) closeOverlay();
+  if (e.key === 'Escape' && navOverlay && navOverlay.classList.contains('open')) closeOverlay();
 });
 
+/* ---- Reveal on scroll ------------------------------------- */
+const reveals = document.querySelectorAll('.reveal');
+if (reveals.length) {
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => revealObs.observe(el));
+}
+
+/* ---- Staggered reveal ------------------------------------- */
+const staggerParents = document.querySelectorAll('.stagger-parent');
+if (staggerParents.length) {
+  const staggerObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.stagger-child').forEach((child, i) => {
+          setTimeout(() => child.classList.add('visible'), i * 80);
+        });
+        staggerObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  staggerParents.forEach(el => staggerObs.observe(el));
+}
+
+/* ---- Project sub-nav active state ------------------------- */
+const subnavLinks = document.querySelectorAll('.subnav-link');
+if (subnavLinks.length) {
+  const sections = Array.from(subnavLinks).map(link => {
+    const id = link.getAttribute('href').replace('#', '');
+    return document.getElementById(id);
+  }).filter(Boolean);
+
+  const subnavObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = '#' + e.target.id;
+        subnavLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => subnavObs.observe(s));
+}
 
 /* ---- Unit filter tabs ------------------------------------- */
-document.querySelectorAll('.unit-filter-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.unit-filter-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-
-    // Flash effect on cards
-    const grid = document.querySelector('.units-grid');
-    grid.style.opacity = '0';
-    grid.style.transform = 'translateY(8px)';
-    grid.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-    setTimeout(() => {
-      const floor = tab.dataset.filter;
-      document.querySelectorAll('.unit-card').forEach(card => {
-        card.style.display = card.dataset.floor === floor ? 'flex' : 'none';
-      });
-      grid.style.opacity = '1';
-      grid.style.transform = 'translateY(0)';
-    }, 150);
+const filterTabs = document.querySelectorAll('.unit-filter-tab');
+if (filterTabs.length) {
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const grid = document.querySelector('.units-grid');
+      if (!grid) return;
+      grid.style.opacity = '0';
+      grid.style.transform = 'translateY(8px)';
+      grid.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+      setTimeout(() => {
+        const floor = tab.dataset.filter;
+        grid.querySelectorAll('.unit-card').forEach(card => {
+          card.style.display = card.dataset.floor === floor ? 'flex' : 'none';
+        });
+        grid.style.opacity = '1';
+        grid.style.transform = 'translateY(0)';
+      }, 150);
+    });
   });
-});
+}
 
-/* ---- Photo grid lightbox ---------------------------------- */
-const photoSrcs = [
-  'assets/kitchen.jpg',
-  'assets/Bed1.jpg',
-  'assets/Bath1.jpg',
-  'assets/living2.jpg',
-  'assets/Bed2.jpg',
-  'assets/Bath2.jpg'
-];
+/* ---- Gallery toggle (Exteriors / Interiors) --------------- */
+const galleryToggleBtns = document.querySelectorAll('.gallery-toggle-btn');
+if (galleryToggleBtns.length) {
+  galleryToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      galleryToggleBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.target;
+      document.querySelectorAll('.gallery-grid').forEach(grid => {
+        grid.style.display = grid.id === target ? 'grid' : 'none';
+      });
+    });
+  });
+}
 
-const photoAlts = [
-  'Modern kitchen with premium finishes in a Beechwood Collection rental suite, Ottawa',
-  'Spacious bedroom in a 2 bedroom rental suite at 82 Genest St, Beechwood Ottawa',
-  'Bathroom with quality fixtures in a Beechwood Collection apartment, Ottawa',
-  'Open-plan living area in a Beechwood Collection rental suite, 82 Genest St Ottawa',
-  'Second bedroom in a 3 bedroom rental suite at Beechwood Collection, Ottawa',
-  'Second bathroom in an executive suite at Beechwood Collection, 82 Genest St Ottawa'
-];
+/* ---- Gallery lightbox ------------------------------------- */
+const lightbox = document.getElementById('galLightbox');
+const lbImg = document.getElementById('galLbImg');
+const lbCounter = document.getElementById('galLbCounter');
 
-let lightboxIndex = 0;
-const lightbox = document.getElementById('photoLightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const lightboxCounter = document.getElementById('lightboxCounter');
+let galleryImages = [];
+let currentLbIdx = 0;
 
-function openLightbox(index) {
-  lightboxIndex = index;
-  lightboxImg.src = photoSrcs[lightboxIndex];
-  lightboxImg.alt = photoAlts[lightboxIndex];
-  lightboxCounter.textContent = `${lightboxIndex + 1} of ${photoSrcs.length}`;
-  lightbox.classList.add('active');
+function buildGalleryImages() {
+  galleryImages = [];
+  document.querySelectorAll('.gallery-item[data-src]').forEach(item => {
+    galleryImages.push({ src: item.dataset.src, alt: item.dataset.alt || '' });
+  });
+}
+
+function openLightbox(idx) {
+  if (!lightbox || !lbImg) return;
+  buildGalleryImages();
+  currentLbIdx = idx;
+  lbImg.src = galleryImages[idx].src;
+  lbImg.alt = galleryImages[idx].alt;
+  if (lbCounter) lbCounter.textContent = `${idx + 1} / ${galleryImages.length}`;
+  lightbox.removeAttribute('hidden');
   document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
-  lightbox.classList.remove('active');
+  if (!lightbox) return;
+  lightbox.setAttribute('hidden', '');
   document.body.style.overflow = '';
 }
 
-document.querySelectorAll('.photo-grid-item').forEach(item => {
-  item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
+function lbNext() {
+  currentLbIdx = (currentLbIdx + 1) % galleryImages.length;
+  openLightbox(currentLbIdx);
+}
+
+function lbPrev() {
+  currentLbIdx = (currentLbIdx - 1 + galleryImages.length) % galleryImages.length;
+  openLightbox(currentLbIdx);
+}
+
+document.querySelectorAll('.gallery-item').forEach((item, idx) => {
+  item.addEventListener('click', () => openLightbox(idx));
 });
 
-document.getElementById('lightboxClose')?.addEventListener('click', closeLightbox);
-
-document.getElementById('lightboxNext')?.addEventListener('click', () => {
-  lightboxIndex = (lightboxIndex + 1) % photoSrcs.length;
-  lightboxImg.src = photoSrcs[lightboxIndex];
-  lightboxImg.alt = photoAlts[lightboxIndex];
-  lightboxCounter.textContent = `${lightboxIndex + 1} of ${photoSrcs.length}`;
-});
-
-document.getElementById('lightboxPrev')?.addEventListener('click', () => {
-  lightboxIndex = (lightboxIndex - 1 + photoSrcs.length) % photoSrcs.length;
-  lightboxImg.src = photoSrcs[lightboxIndex];
-  lightboxImg.alt = photoAlts[lightboxIndex];
-  lightboxCounter.textContent = `${lightboxIndex + 1} of ${photoSrcs.length}`;
-});
-
-lightbox?.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-
-document.addEventListener('keydown', (e) => {
-  if (!lightbox || !lightbox.classList.contains('active')) return;
+const lbClose = document.getElementById('galLbClose');
+const lbNextBtn = document.getElementById('galLbNext');
+const lbPrevBtn = document.getElementById('galLbPrev');
+if (lbClose) lbClose.addEventListener('click', closeLightbox);
+if (lbNextBtn) lbNextBtn.addEventListener('click', lbNext);
+if (lbPrevBtn) lbPrevBtn.addEventListener('click', lbPrev);
+if (lightbox) lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lightbox || lightbox.hasAttribute('hidden')) return;
   if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
-  if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+  if (e.key === 'ArrowRight') lbNext();
+  if (e.key === 'ArrowLeft') lbPrev();
 });
 
-/* ---- Neighbourhood accordion ------------------------------ */
-document.querySelectorAll('.accordion-item').forEach(item => {
-  item.querySelector('.accordion-trigger').addEventListener('click', () => {
+/* ---- Accordion -------------------------------------------- */
+document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest('.accordion-item');
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   });
 });
 
-/* ---- Suite features: deal-in animation -------------------- */
-const suiteGrid = document.querySelector('.suite-features-grid');
-if (suiteGrid) {
-  new IntersectionObserver(([entry], obs) => {
-    if (entry.isIntersecting) {
-      suiteGrid.classList.add('dealing');
-      obs.disconnect();
+/* ---- Waitlist form submission ----------------------------- */
+const form = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+const nameError = document.getElementById('nameError');
+const emailError = document.getElementById('emailError');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    const name = form.querySelector('[name="name"]');
+    const email = form.querySelector('[name="email"]');
+
+    if (nameError) nameError.textContent = '';
+    if (emailError) emailError.textContent = '';
+
+    if (!name || !name.value.trim()) {
+      if (nameError) nameError.textContent = 'Please enter your name.';
+      valid = false;
     }
-  }, { threshold: 0.1 }).observe(suiteGrid);
+    if (!email || !email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      if (emailError) emailError.textContent = 'Please enter a valid email address.';
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    const submitBtn = form.querySelector('.form-submit');
+    if (submitBtn) { submitBtn.textContent = 'SENDING…'; submitBtn.disabled = true; }
+
+    try {
+      const data = new FormData(form);
+      const body = {};
+      data.forEach((v, k) => body[k] = v);
+
+      const res = await fetch('https://formspree.io/f/xjkknell', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        if (formSuccess) {
+          formSuccess.style.display = 'block';
+          formSuccess.textContent = 'Thank you — we\'ll be in touch with early access details.';
+        }
+      } else {
+        throw new Error('server error');
+      }
+    } catch {
+      if (submitBtn) {
+        submitBtn.textContent = 'SEND';
+        submitBtn.disabled = false;
+        submitBtn.style.borderColor = '#e07070';
+      }
+      if (emailError) emailError.textContent = 'Something went wrong. Please try again or email us directly.';
+    }
+  });
 }
 
-/* ---- Reveal scroll animations ----------------------------- */
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.08 }
-);
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ---- Hero image tap-to-swap ------------------------------- */
-(function() {
-  const heroTapViewer = document.getElementById('heroTapViewer');
-  const heroImg1 = document.getElementById('heroImg1');
-  const heroImg2 = document.getElementById('heroImg2');
-  const heroTapHint = document.getElementById('heroTapHint');
-  if (!heroTapViewer || !heroImg1 || !heroImg2) return;
-
-  let heroActive = 1;
-  let tapStartX = 0;
-  let tapStartY = 0;
-
-  function swap() {
-    if (heroActive === 1) {
-      heroImg1.classList.remove('active');
-      heroImg2.classList.add('active');
-      heroActive = 2;
-    } else {
-      heroImg2.classList.remove('active');
-      heroImg1.classList.add('active');
-      heroActive = 1;
-    }
-    if (heroTapHint) {
-      heroTapHint.style.opacity = '0';
-      heroTapHint.style.visibility = 'hidden';
-    }
-  }
-
-  // Desktop click
-  heroTapViewer.addEventListener('click', swap);
-
-  // Mobile touch — only fire on tap, not scroll
-  heroTapViewer.addEventListener('touchstart', function(e) {
-    tapStartX = e.touches[0].clientX;
-    tapStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  heroTapViewer.addEventListener('touchend', function(e) {
-    var dx = Math.abs(e.changedTouches[0].clientX - tapStartX);
-    var dy = Math.abs(e.changedTouches[0].clientY - tapStartY);
-    if (dx < 15 && dy < 15) {
-      e.preventDefault();
-      swap();
-    }
-  }, { passive: false });
-})();
-
-/* ---- Form validation -------------------------------------- */
-const contactForm = document.getElementById('contactForm');
-const formSuccess = document.getElementById('formSuccess');
-const nameInput   = document.getElementById('fname');
-const emailInput  = document.getElementById('femail');
-const nameError   = document.getElementById('nameError');
-const emailError  = document.getElementById('emailError');
-
-if (contactForm) contactForm.addEventListener('submit', e => {
-  e.preventDefault();
-  let valid = true;
-
-  nameError.textContent  = '';
-  emailError.textContent = '';
-
-  if (!nameInput.value.trim()) {
-    nameError.textContent = 'Name is required.';
-    valid = false;
-  }
-
-  const emailVal = emailInput.value.trim();
-  if (!emailVal) {
-    emailError.textContent = 'Email is required.';
-    valid = false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-    emailError.textContent = 'Please enter a valid email address.';
-    valid = false;
-  }
-
-  if (valid) {
-    contactForm.hidden = true;
-    formSuccess.innerHTML = '<h3 class="form-success-title">Thank You</h3><p class="form-success-body">We\'ve received your registration and will be in touch shortly.</p>';
-  }
 });
-
-}); // end DOMContentLoaded
-
