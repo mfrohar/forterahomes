@@ -998,9 +998,10 @@ ul { list-style: none; }
 .btn-register-cta:hover { background: transparent; color: var(--white); }
 .register-form-wrap { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 3rem; }
 
-.register-other-inquiries { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.register-other-inquiries { margin-top: 2.5rem; padding: 1.75rem 1.75rem 1.75rem 1.5rem; border-left: 3px solid var(--bronze); background: rgba(255,255,255,0.04); }
 .register-other-inquiries .section-label { color: var(--bronze-light); }
-.register-email-link { display: inline-block; margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--white); text-decoration: none; border-bottom: 1px solid var(--bronze); padding-bottom: 0.15rem; transition: color 0.2s ease; }
+.register-other-inquiries .register-desc { color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
+.register-email-link { display: inline-block; margin-top: 1.25rem; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--white); text-decoration: none; border-bottom: 1px solid var(--bronze); padding-bottom: 0.15rem; transition: color 0.2s ease; }
 .register-email-link:hover { color: var(--bronze-light); }
 
 .form-field { margin-bottom: 1.5rem; }
