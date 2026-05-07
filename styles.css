@@ -1159,6 +1159,8 @@ ul { list-style: none; }
   .expertise-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
   .overview-specs { grid-template-columns: 1fr 1fr; }
+  .spec-item { padding: 1rem 1rem; }
+  .spec-value { font-size: 1.25rem; }
   .home-project-inner { padding: 0 1.25rem; }
   .home-expertise-inner { padding: 0 1.25rem; }
   .home-blog-inner { padding: 0 1.25rem; }
