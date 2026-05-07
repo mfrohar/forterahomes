@@ -995,7 +995,7 @@ ul { list-style: none; }
 .register-cta-inner .section-label { color: var(--bronze-light); }
 .register-cta-inner .section-h2 { color: var(--white); font-size: clamp(3rem, 6vw, 5rem); }
 .register-desc { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; line-height: 1.9; color: rgba(255,255,255,0.52); margin-top: 1.5rem; }
-.btn-register-cta { display: inline-block; margin-top: 2.5rem; background: var(--bronze); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 1.1rem 2.75rem; border: 1px solid var(--bronze); transition: background 0.25s ease, color 0.25s ease; }
+.btn-register-cta { display: inline-block; margin-top: 2.5rem; background: var(--bronze); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 1.1rem 2.75rem; border: 1px solid var(--bronze); border-radius: 50px; transition: background 0.25s ease, color 0.25s ease; }
 .btn-register-cta:hover { background: transparent; color: var(--white); }
 .register-form-wrap { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 3rem; }
 
@@ -1013,7 +1013,7 @@ ul { list-style: none; }
 .form-field textarea { resize: vertical; min-height: 100px; }
 .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.18); }
 .form-error { font-family: 'Montserrat', sans-serif; font-size: 0.63rem; color: #e07070; margin-top: 0.3rem; min-height: 1em; }
-.form-submit { width: 100%; background: var(--bronze); color: var(--white); border: 1px solid var(--bronze); font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 1rem; cursor: pointer; transition: background 0.25s ease; margin-top: 0.5rem; }
+.form-submit { width: 100%; background: var(--bronze); color: var(--white); border: 1px solid var(--bronze); border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 1rem; cursor: pointer; transition: background 0.25s ease; margin-top: 0.5rem; }
 .form-submit:hover { background: #9e8369; border-color: #9e8369; }
 .form-privacy { font-family: 'Montserrat', sans-serif; font-size: 0.58rem; color: rgba(255,255,255,0.22); margin-top: 1rem; text-align: center; }
 .form-success { font-family: 'Montserrat', sans-serif; font-size: 0.82rem; color: var(--bronze-light); text-align: center; padding: 2rem; display: none; }
