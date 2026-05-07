@@ -37,7 +37,10 @@
       "Bash(cp -r \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/assets/\" /tmp/fortera-site/assets/)",
       "Bash(cp -r \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/projects/\" /tmp/fortera-site/projects/)",
       "Bash(python3 -c ' *)",
-      "Bash(python3 -c *)"
+      "Bash(python3 -c *)",
+      "Bash(xargs sed -i '' 's|href=\"/projects/beechwood-collection#register\"|href=\"/register\"|g')",
+      "Bash(cp \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/styles.css\" /tmp/fortera-site/)",
+      "Bash(cp \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/index.html\" /tmp/fortera-site/)"
     ]
   }
 }
