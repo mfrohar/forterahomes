@@ -53,7 +53,7 @@
         <a href="/blog" class="nav-link">Blog</a>
       </div>
       <div class="nav-right">
-        <a href="#register" class="nav-cta">Contact Us</a>
+        <a href="/register" class="nav-cta">Contact Us</a>
         <button class="nav-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">MENU <span aria-hidden="true">&#9776;</span></button>
       </div>
     </div>
@@ -88,7 +88,7 @@
         <a href="#gallery"       class="subnav-link">Gallery</a>
         <a href="#amenities"     class="subnav-link">Amenities</a>
         <a href="#neighbourhood" class="subnav-link">Neighbourhood</a>
-        <a href="#register"      class="subnav-link">Register</a>
+        <a href="/register"      class="subnav-link">Register</a>
     </div>
   </nav>
 
@@ -162,7 +162,7 @@
             <span class="placeholder-label">Floorplan</span>
             <span class="placeholder-text">Coming Soon</span>
           </div>
-          <a href="#register" class="unit-cta">Request Info</a>
+          <a href="/register" class="unit-cta">Request Info</a>
         </div>
 
         <div class="unit-card" data-floor="ground">
@@ -178,7 +178,7 @@
             <span class="placeholder-label">Floorplan</span>
             <span class="placeholder-text">Coming Soon</span>
           </div>
-          <a href="#register" class="unit-cta">Request Info</a>
+          <a href="/register" class="unit-cta">Request Info</a>
         </div>
 
         <!-- 2ND FLOOR -->
@@ -195,7 +195,7 @@
             <span class="placeholder-label">Floorplan</span>
             <span class="placeholder-text">Coming Soon</span>
           </div>
-          <a href="#register" class="unit-cta">Request Info</a>
+          <a href="/register" class="unit-cta">Request Info</a>
         </div>
 
         <div class="unit-card" data-floor="second" style="display:none">
@@ -211,7 +211,7 @@
             <span class="placeholder-label">Floorplan</span>
             <span class="placeholder-text">Coming Soon</span>
           </div>
-          <a href="#register" class="unit-cta">Request Info</a>
+          <a href="/register" class="unit-cta">Request Info</a>
         </div>
 
         <!-- 3RD FLOOR -->
@@ -228,7 +228,7 @@
             <span class="placeholder-label">Floorplan</span>
             <span class="placeholder-text">Coming Soon</span>
           </div>
-          <a href="#register" class="unit-cta">Request Info</a>
+          <a href="/register" class="unit-cta">Request Info</a>
         </div>
 
         <div class="unit-card" data-floor="third" style="display:none">
@@ -244,7 +244,7 @@
             <span class="placeholder-label">Floorplan</span>
             <span class="placeholder-text">Coming Soon</span>
           </div>
-          <a href="#register" class="unit-cta">Request Info</a>
+          <a href="/register" class="unit-cta">Request Info</a>
         </div>
 
         <!-- 4TH FLOOR -->
@@ -261,7 +261,7 @@
             <span class="placeholder-label">Floorplan</span>
             <span class="placeholder-text">Coming Soon</span>
           </div>
-          <a href="#register" class="unit-cta">Request Info</a>
+          <a href="/register" class="unit-cta">Request Info</a>
         </div>
 
         <div class="unit-card" data-floor="fourth" style="display:none">
@@ -277,7 +277,7 @@
             <span class="placeholder-label">Floorplan</span>
             <span class="placeholder-text">Coming Soon</span>
           </div>
-          <a href="#register" class="unit-cta">Request Info</a>
+          <a href="/register" class="unit-cta">Request Info</a>
         </div>
 
       </div>
@@ -453,47 +453,11 @@
 
   <!-- ===================== REGISTER ===================== -->
   <section id="register" class="section-register">
-    <div class="register-inner">
-      <div class="register-text reveal">
-        <p class="section-label">JOIN THE WAITLIST</p>
-        <h2 class="section-h2">Be First to<br>Know</h2>
-        <p class="register-desc">Register your interest today and receive early access to pricing, floorplan availability, and exclusive pre-launch updates for Beechwood Collection.</p>
-      </div>
-      <div class="register-form-wrap reveal">
-        <form id="contactForm" novalidate>
-          <div class="form-field">
-            <label for="fname">NAME *</label>
-            <input type="text" id="fname" name="name" autocomplete="name" placeholder="Your full name">
-            <div class="form-error" id="nameError"></div>
-          </div>
-          <div class="form-field">
-            <label for="femail">EMAIL *</label>
-            <input type="email" id="femail" name="email" autocomplete="email" placeholder="your@email.com">
-            <div class="form-error" id="emailError"></div>
-          </div>
-          <div class="form-field">
-            <label for="fphone">PHONE</label>
-            <input type="tel" id="fphone" name="phone" autocomplete="tel" placeholder="Optional">
-          </div>
-          <div class="form-field">
-            <label for="layout">PREFERRED UNIT TYPE</label>
-            <select id="layout" name="layout">
-              <option value="" disabled selected>Select a preference</option>
-              <option value="2bed-1bath">Elmwood &mdash; 2 Bed / 1 Bath</option>
-              <option value="3bed-2bath">Manor &mdash; 3 Bed / 2 Bath</option>
-              <option value="2bed-2bath">Rideau (Executive) &mdash; 2 Bed / 2 Bath</option>
-              <option value="undecided">Undecided</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="fmessage">MESSAGE</label>
-            <textarea id="fmessage" name="message" rows="3" placeholder="Any questions or notes…"></textarea>
-          </div>
-          <button type="submit" class="form-submit">JOIN THE WAITLIST</button>
-          <p class="form-privacy">Your information is kept strictly confidential.</p>
-        </form>
-        <div id="formSuccess" class="form-success"></div>
-      </div>
+    <div class="register-cta-inner reveal">
+      <p class="section-label">GET IN TOUCH</p>
+      <h2 class="section-h2">Ready to Make<br>This Home Yours?</h2>
+      <p class="register-desc">Have questions about availability, pricing, or floor plans? We&rsquo;d love to hear from you.</p>
+      <a href="/register" class="btn-register-cta">Inquire About Renting</a>
     </div>
   </section>
 
@@ -535,7 +499,7 @@
       <a href="/projects" class="nav-overlay-link" style="--i:0">Projects</a>
         <a href="/expertise" class="nav-overlay-link" style="--i:2">Expertise</a>
         <a href="/blog" class="nav-overlay-link" style="--i:3">Blog</a>
-        <a href="#register" class="nav-overlay-link" style="--i:4">Contact Us</a>
+        <a href="/register" class="nav-overlay-link" style="--i:4">Contact Us</a>
     </nav>
     <div class="nav-overlay-footer">
       <a href="https://www.instagram.com/forterahomes" class="nav-overlay-ig" target="_blank" rel="noopener noreferrer" aria-label="Fortera Homes on Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
