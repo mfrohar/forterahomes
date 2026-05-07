@@ -33,7 +33,11 @@
       "Bash(gh pr *)",
       "Bash(git commit *)",
       "Bash(git fetch *)",
-      "Bash(git merge *)"
+      "Bash(git merge *)",
+      "Bash(cp -r \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/assets/\" /tmp/fortera-site/assets/)",
+      "Bash(cp -r \"/Users/camfrohar/Library/Mobile Documents/com~apple~CloudDocs/Claude Code/forterahomes/.claude/worktrees/dazzling-shannon-0746cb/projects/\" /tmp/fortera-site/projects/)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c *)"
     ]
   }
 }

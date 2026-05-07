@@ -4,7 +4,7 @@
     {
       "name": "fortera-homes",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd /tmp/fortera-site && python3 server.py $PORT"],
+      "runtimeArgs": ["-c", "cd /tmp/fortera-site && python3 -m http.server $PORT"],
       "port": 4200,
       "autoPort": true
     }
