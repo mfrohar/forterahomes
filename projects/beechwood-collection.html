@@ -434,37 +434,29 @@
   (function () {
     var HOME = { lat: 45.4389969, lng: -75.6727247 };
     var POIS = [
-      /* Food & Drink — immediate vicinity */
-      { name: 'JnJ Bakery Café',         cat: 'food',     desc: 'Neighbourhood bakery & espresso bar — 3 min walk',          lat: 45.4393, lng: -75.6715 },
-      { name: 'Beechwood Creamery',      cat: 'food',     desc: 'Local ice cream & desserts on Beechwood Ave',               lat: 45.4386, lng: -75.6705 },
-      { name: 'Morning Owl Coffee',      cat: 'food',     desc: 'Specialty coffee on Beechwood Ave',                         lat: 45.4381, lng: -75.6698 },
-      { name: 'Pelican Seafood Market',  cat: 'food',     desc: 'Fresh seafood & casual dining on Beechwood Ave',            lat: 45.4372, lng: -75.6685 },
-      { name: 'Signatures Restaurant',   cat: 'food',     desc: 'Upscale neighbourhood dining on Beechwood Ave',             lat: 45.4360, lng: -75.6672 },
-      { name: 'Farmhouse Café',          cat: 'food',     desc: 'All-day brunch & café on Beechwood Ave',                    lat: 45.4295, lng: -75.6610 },
-      { name: 'The Clocktower Brew Pub', cat: 'food',     desc: 'Local craft beers & pub fare on Beechwood Ave',             lat: 45.4268, lng: -75.6575 },
-      { name: 'Byward Market',           cat: 'food',     desc: "Ottawa's premier open-air market — restaurants, cafés & fresh food", lat: 45.4274, lng: -75.6939 },
+      /* Food & Drink */
+      { name: 'JnJ Bakery Café',         cat: 'food',     desc: 'Neighbourhood bakery & espresso bar — 3 min walk',                   lat: 45.4394, lng: -75.6748 },
+      { name: 'The Clocktower Brew Pub', cat: 'food',     desc: 'Local craft beers & pub fare on MacKay St',                          lat: 45.4396, lng: -75.6772 },
+      { name: 'Signatures Restaurant',   cat: 'food',     desc: 'Upscale dining by Le Cordon Bleu on Laurier Ave E',                  lat: 45.4292, lng: -75.6747 },
+      { name: 'Byward Market',           cat: 'food',     desc: "Ottawa's premier open-air market — restaurants, cafés & fresh food", lat: 45.4276, lng: -75.6924 },
       /* Fitness */
-      { name: 'Ottawa River Pathway',    cat: 'fitness',  desc: 'Scenic multi-use trail — 2 min walk from the building',     lat: 45.4435, lng: -75.6728 },
-      { name: 'Riverain Beach Trail',    cat: 'fitness',  desc: 'Riverside path with beach access & open green space',       lat: 45.4415, lng: -75.6705 },
-      { name: 'F45 Training Vanier',     cat: 'fitness',  desc: 'High-intensity group fitness studio nearby',                lat: 45.4318, lng: -75.6758 },
-      { name: 'Rideau River E. Pathway', cat: 'fitness',  desc: 'Waterfront trail — kilometres of cycling & running',        lat: 45.4195, lng: -75.6870 },
+      { name: 'Ottawa River Pathway',    cat: 'fitness',  desc: 'Scenic multi-use trail along the Ottawa River — 2 min walk',         lat: 45.4435, lng: -75.6728 },
+      { name: 'Rideau River E. Pathway', cat: 'fitness',  desc: 'Waterfront trail along the Rideau River — cycling & running',        lat: 45.4195, lng: -75.6870 },
       /* Parks */
-      { name: 'Riverain Park',           cat: 'parks',    desc: 'Open green space, beach & Ottawa River views — steps away', lat: 45.4448, lng: -75.6718 },
-      { name: 'Beechwood Cemetery',      cat: 'parks',    desc: 'National Historic Site — 160 acres of peaceful walking',    lat: 45.4250, lng: -75.6478 },
-      { name: 'Strathcona Park',         cat: 'parks',    desc: 'Riverside park with green space & sports fields',           lat: 45.4198, lng: -75.6728 },
-      { name: "Major's Hill Park",       cat: 'parks',    desc: 'Iconic Ottawa park overlooking the Rideau Canal & Parliament', lat: 45.4261, lng: -75.6971 },
+      { name: 'Riverain Park',           cat: 'parks',    desc: 'Open green space with Ottawa River access',                          lat: 45.4298, lng: -75.6696 },
+      { name: 'Beechwood Cemetery',      cat: 'parks',    desc: 'National Historic Site — 160 acres of peaceful walking',             lat: 45.4469, lng: -75.6599 },
+      { name: 'Strathcona Park',         cat: 'parks',    desc: 'Riverside park with green space & sports fields',                    lat: 45.4286, lng: -75.6731 },
+      { name: "Major's Hill Park",       cat: 'parks',    desc: 'Iconic Ottawa park overlooking the Rideau Canal & Parliament',       lat: 45.4279, lng: -75.6988 },
       /* Transit */
-      { name: 'OC Transpo — Beechwood', cat: 'transit',  desc: 'Frequent bus service to downtown Ottawa & Rideau Centre',   lat: 45.4383, lng: -75.6700 },
-      { name: 'Rideau LRT Station',      cat: 'transit',  desc: 'O-Train Confederation Line — direct to downtown & airport', lat: 45.4240, lng: -75.6948 },
-      { name: 'Vanier Pkwy Bus Corridor',cat: 'transit',  desc: 'Express routes connecting north & south Ottawa',            lat: 45.4395, lng: -75.6820 },
-      /* Shopping — immediate + wider */
-      { name: 'IGA Beechwood',           cat: 'shopping', desc: 'Full-service grocery — 4 min walk from 82 Genest',          lat: 45.4388, lng: -75.6710 },
-      { name: 'Shoppers Drug Mart',      cat: 'shopping', desc: 'Pharmacy & everyday essentials on Beechwood Ave',           lat: 45.4378, lng: -75.6692 },
-      { name: 'LCBO Beechwood',          cat: 'shopping', desc: 'Liquor & wine on Beechwood Ave',                            lat: 45.4365, lng: -75.6678 },
-      { name: 'Rideau Centre',           cat: 'shopping', desc: "Ottawa's largest downtown mall — 180+ stores",              lat: 45.4240, lng: -75.6928 },
-      { name: 'Byward Market Shops',     cat: 'shopping', desc: 'Independent boutiques, galleries & specialty food',         lat: 45.4279, lng: -75.6942 },
+      { name: 'OC Transpo — Beechwood', cat: 'transit',  desc: 'Frequent bus service to downtown Ottawa & Rideau Centre',            lat: 45.4395, lng: -75.6750 },
+      { name: 'Rideau LRT Station',      cat: 'transit',  desc: 'O-Train Confederation Line — direct to downtown & airport',         lat: 45.4263, lng: -75.6915 },
+      /* Shopping */
+      { name: 'Metro Beechwood',         cat: 'shopping', desc: 'Full-service grocery at 50 Beechwood Ave — 4 min walk',             lat: 45.4395, lng: -75.6756 },
+      { name: 'LCBO Beechwood',          cat: 'shopping', desc: 'Liquor & wine at Beechwood & MacKay',                               lat: 45.4439, lng: -75.6704 },
+      { name: 'Rideau Centre',           cat: 'shopping', desc: "Ottawa's largest downtown mall — 180+ stores",                      lat: 45.4254, lng: -75.6924 },
+      { name: 'Byward Market Shops',     cat: 'shopping', desc: 'Independent boutiques, galleries & specialty food',                  lat: 45.4279, lng: -75.6924 },
       /* School */
-      { name: 'University of Ottawa',    cat: 'school',   desc: 'Major university campus — 10 min by bus or bike',           lat: 45.4231, lng: -75.6844 },
+      { name: 'University of Ottawa',    cat: 'school',   desc: 'Major university campus — 10 min by bus or bike',                   lat: 45.4225, lng: -75.6834 },
     ];
 
     var CAT_COLORS = {
