@@ -962,21 +962,19 @@ ul { list-style: none; }
 /* Neighbourhood */
 .section-neighbourhood { padding: 7rem 0; background: var(--cream); }
 .neighbourhood-inner { max-width: 1280px; margin: 0 auto; padding: 0 3rem; }
-.neighbourhood-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
-.neighbourhood-desc { font-family: 'Montserrat', sans-serif; font-size: 0.88rem; line-height: 1.9; color: rgba(28,26,24,0.65); margin-bottom: 2.5rem; }
+.neighbourhood-desc { font-family: 'Montserrat', sans-serif; font-size: 0.88rem; line-height: 1.9; color: rgba(28,26,24,0.65); margin-top: 1.5rem; margin-bottom: 0; }
 
-.accordion { border-top: 1px solid var(--sand); }
-.accordion-item { border-bottom: 1px solid var(--sand); }
-.accordion-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: none; padding: 1.25rem 0; cursor: pointer; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal); transition: color 0.2s ease; }
-.accordion-trigger:hover { color: var(--bronze); }
-.accordion-icon { width: 16px; height: 16px; position: relative; flex-shrink: 0; }
-.accordion-icon::before, .accordion-icon::after { content: ''; position: absolute; background: currentColor; transition: transform 0.3s ease, opacity 0.3s ease; }
-.accordion-icon::before { width: 12px; height: 1px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-.accordion-icon::after  { width: 1px; height: 12px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-.accordion-item.open .accordion-icon::after { transform: translate(-50%,-50%) rotate(90deg); opacity: 0; }
-.accordion-body { display: none; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; line-height: 1.85; color: rgba(28,26,24,0.6); padding-bottom: 1.25rem; }
-.accordion-item.open .accordion-body { display: block; }
-.neighbourhood-map { width: 100%; aspect-ratio: 1; border: none; filter: grayscale(15%); }
+/* Map filters */
+.map-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 2.5rem 0 1.25rem; }
+.map-filter { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.5rem 1.1rem; border: 1px solid var(--sand); background: transparent; color: rgba(28,26,24,0.55); cursor: pointer; border-radius: 2px; transition: all 0.2s ease; }
+.map-filter:hover { border-color: var(--bronze); color: var(--bronze); }
+.map-filter.active { background: var(--charcoal); border-color: var(--charcoal); color: #fff; }
+
+/* Leaflet map */
+#neighbourhood-map { width: 100%; height: 560px; border-radius: 2px; }
+.leaflet-popup-content-wrapper { border-radius: 2px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: none; padding: 0; }
+.leaflet-popup-content { margin: 1rem 1.1rem; }
+.leaflet-popup-tip { background: #fff; }
 
 /* Amenities */
 .section-amenities { padding: 7rem 0; background: var(--blush); }
